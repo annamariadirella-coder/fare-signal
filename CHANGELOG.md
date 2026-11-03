@@ -1,5 +1,12 @@
 # What changed
 
+## The problem comes first — 2026-11-03
+
+- Rebuilt the main guide in Italian around the rising fare, wider direct-train search, budget, Telegram alert, purchase and stop.
+- Added a readable Telegram example and a six-part story illustration, with text alternatives.
+- Put the problem, solution and Telegram example before the interactive setup on the website.
+- Included the illustration in the portable one-file demo, with a check that no image file is left outside it.
+
 ## The whole journey — 2026-11-03
 
 - Added pretend bot setup, Start, watch activation and a two-hour clock you control.

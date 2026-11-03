@@ -11,5 +11,7 @@ test('the one-file presentation contains a runnable module with no remaining imp
   assert.ok(code);
   assert.doesNotMatch(code, /^import /m);
   assert.match(code, /class JourneyDemo/);
+  assert.doesNotMatch(html, /src="assets\//);
+  assert.match(html, /src="data:image\/svg\+xml,/);
   execFileSync(process.execPath, ['--input-type=module', '--check'], { input: code });
 });

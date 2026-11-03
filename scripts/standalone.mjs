@@ -14,5 +14,9 @@ html = html.replace('<link rel="stylesheet" href="demo/styles.css">', `<style>${
   .replace('<script type="module" src="demo/app.mjs"></script>', `<script type="module">\n${engine}\n${fixtures}\n${journey}\n${app}\n</script>`)
   .replace('href="assets/favicon.svg"', `href="${icon}"`)
   .replace(/href="(?:README\.md|LICENSE|docs\/[^\"]+)"/g, 'href="#principles"');
+for (const match of [...html.matchAll(/src="(assets\/[^"?]+\.svg)"/g)]) {
+  const data = 'data:image/svg+xml,' + encodeURIComponent(await text(match[1]));
+  html = html.replaceAll(`src="${match[1]}"`, `src="${data}"`);
+}
 await writeFile(new URL('fare-signal-demo.html', root), html);
 console.log('Self-contained, offline demo created: fare-signal-demo.html');

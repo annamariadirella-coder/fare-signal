@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Fare Signal: a little train-price game with made-up data. Verify twice. Notify once.">
+  <meta name="description" content="Fare Signal: how a train-price watcher solved a real search problem with Telegram alerts. Explore the story with simulated data.">
   <meta name="theme-color" content="#f5f3ed">
   <meta property="og:title" content="Fare Signal — less noise. Better fares.">
   <meta property="og:description" content="A little helper checks prices twice and tells you once. All trains and prices are pretend.">
@@ -12,10 +12,10 @@
   <script type="module" src="demo/app.mjs"></script>
 </head>
 <body>
-  <a class="skip" href="#playground">Skip to the game</a>
+  <a class="skip" href="#playground">Skip to the demo</a>
   <header class="masthead wrap">
     <a class="brand" href="#" aria-label="Fare Signal home"><span class="brand-mark" aria-hidden="true">↗</span> fare<span class="brand-light">signal</span><span class="brand-period">.</span></a>
-    <nav aria-label="Main navigation"><a href="#playground">Try it</a><a href="#principles">Why it works</a><a href="README.md">Project guide <span aria-hidden="true">↗</span></a></nav>
+    <nav aria-label="Main navigation"><a href="#playground">Try it</a><a href="#story">La storia</a><a href="README.md">Project guide <span aria-hidden="true">↗</span></a></nav>
     <span class="edition"><span class="dot"></span> A project you can learn from</span>
   </header>
 
@@ -32,6 +32,17 @@
         <div class="art-ticket"><span>CHECKED TWICE</span><strong>€34<span>.90</span></strong><small>Two checks. One message. <b>↗</b></small></div>
         <span class="art-caption">Made-up price · pretend trains</span>
       </div>
+    </section>
+
+
+    <section class="outcome-story wrap" id="story" lang="it" aria-labelledby="story-title">
+      <div class="outcome-copy"><p class="eyebrow">IL PROBLEMA → LA SOLUZIONE → IL RISULTATO</p><h2 id="story-title">Non volevo un’altra pagina.<br><em>Volevo un messaggio.</em></h2>
+      <p>Il prezzo del treno che seguivo stava salendo. Cercavo un biglietto <strong>sotto i 40 €</strong>, senza controllare il sito tutto il giorno.</p>
+      <p>Ho allargato la ricerca ai <strong>diretti dopo le 12:30</strong>. Il sistema originale controllava circa ogni due ore, verificava due volte e mi avvisava su Telegram. Il quaderno degli avvisi fermava i doppioni.</p>
+      <p><strong>Abbiamo comprato un biglietto per un treno successivo. Poi abbiamo spento il monitor.</strong> L’acquisto lo facevamo noi, sul sito.</p>
+      <div class="outcome-rule"><strong>Esempio: budget sotto 40 €.</strong><span>47,90 € → nessun messaggio.</span><span>34,90 €, confermato due volte → avviso Telegram.</span><span>Stesso treno già segnalato → nessun doppione.</span></div>
+      <p class="outcome-boundary">Questa immagine usa dati inventati, non il prezzo del nostro biglietto. La demo qui sotto simula tutto il percorso e non invia messaggi reali.</p><a class="text-link" href="docs/CASE_STUDY.md">Leggi come l’ho costruito ↗</a></div>
+      <figure class="telegram-example"><img src="assets/telegram-example.svg" width="640" height="800" alt="Avviso Telegram di esempio: NF 208, diretto alle 15:38, costa 34,90 euro, sotto il budget di 40 euro. Prezzo verificato due volte. Nessun messaggio reale inviato."><figcaption>Il risultato che cercavo: sapere quando un treno rientra nel budget. Viaggio e importo illustrati sono inventati.</figcaption></figure>
     </section>
 
     <section class="playground wrap" id="playground" aria-labelledby="demo-title">

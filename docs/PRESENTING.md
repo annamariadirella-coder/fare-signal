@@ -1,61 +1,46 @@
-# Show Fare Signal to a friend
+# Come raccontare Fare Signal in tre minuti
 
-You can show the project in about three minutes. Open the [demo](https://annamariadirella-coder.github.io/fare-signal/) first.
+Apri la [storia con l’esempio Telegram](https://annamariadirella-coder.github.io/fare-signal/#story). Parti dal problema, prima dei pulsanti.
 
-## 1. Tell the little story
+## 1. Il problema: il prezzo saliva
 
-“I built a helper that checked real train prices, ran about every two hours and sent Telegram alerts. We bought a ticket and stopped it. This public version shows the whole journey with made-up data.”
+«Dovevo comprare un biglietto del treno. Il prezzo della partenza che seguivo stava aumentando. Volevo spendere meno di 40 €, senza tornare sul sito tutto il giorno.»
 
-## 2. Start the pretend bot, then show a message
+## 2. La scelta: guardare anche le partenze successive
 
-Press **Make a pretend bot**, then **Press Start — pretend chat**, then **Start the pretend watch**. Show the `/start` and hello in the chat.
+«Mi andavano bene anche altri treni, purché diretti e dopo le 12:30, nella stessa data e sulla stessa tratta. Ho costruito un sistema che li cercasse per me.»
 
-Choose **A cheaper ticket**, keep **€40**, and press **Jump 2 hours & check**. Follow the six steps from timer to Telegram receipt.
+## 3. Il risultato utile: un messaggio, non un’altra pagina
 
-“The helper sees the same price twice. It checks that this is the right train. Two tickets cost less than €40, so two pretend messages appear. Nothing goes to Telegram.”
+Mostra l’immagine Telegram, visibile prima della demo.
 
-The two reads are 20 pretend seconds apart. The short animation is not a real live check.
+«Il sistema originale controllava circa ogni due ore. Se ritrovava lo stesso treno e prezzo in due letture, e il prezzo era sotto il budget, il bot mi avvisava su Telegram. Questa immagine usa un treno inventato a 34,90 €: mostra il tipo di risultato, non il biglietto che abbiamo comprato.»
 
-## 3. Show its memory
+## 4. Mostra come funziona
 
-Open **Open the notebook** to show the two price reads and the “told you” marks. Then press **Jump 2 hours & check** again.
+1. Premi **Make a pretend bot**, poi **Press Start — pretend chat**.
+2. Premi **Start the pretend watch**, poi **Jump 2 hours & check**.
+3. Indica le due notifiche nella chat finta e apri **Open the notebook**.
+4. Fai un altro salto di due ore. La chat non riceve doppioni.
 
-“No new messages! The helper has a little notebook. It remembers which trains it already told us about.”
+«Il quaderno ricorda i treni già segnalati. Se i due prezzi sono diversi, o non sappiamo se un invio è riuscito, il sistema aspetta invece di dare una risposta poco sicura.»
 
-## 4. Show what happens when it is unsure
+## 5. Il finale: comprare e fermare il monitor
 
-Choose **The prices do not match**, then check.
+Premi **I bought a ticket — stop**.
 
-“The two answers are different. The helper waits instead of calling it a bargain.”
+«Abbiamo trovato una partenza successiva adatta e comprato il biglietto sul sito. Poi abbiamo spento le notifiche. Il programma non comprava nulla al posto nostro.»
 
-Choose **Did the message arrive?**, then check twice.
+## 6. Spiega cosa è reale e cosa è simulato
 
-“The pretend sender did not give a clear answer. The helper does not send again, because the first message might have arrived.”
+«Il sistema originale privato aveva ricerca ferroviaria reale, timer, doppia verifica, memoria degli avvisi e Telegram. Questo repository pubblico mostra il percorso completo con dati e messaggi inventati. Le regole sono codice eseguibile, ma qui non si cercano prezzi reali e non si inviano notifiche al telefono.»
 
-## 5. Show the checks
+Se qualcuno vuole vedere il codice, mostra `src/monitor.mjs` e lancia `npm test`: le 16 prove verificano prezzi, treni, doppioni, invii incerti, avvio, stop e file unico. [Qui sono spiegati i controlli](QA.md).
 
-If your friend wants to see the code, open `src/monitor.mjs`. That file holds the rules. In the project folder, run:
+## Prima di presentarlo
 
-```sh
-npm test
-```
+Premi **Start over** per ripartire. Lascia visibili le etichette dei dati inventati. Mostra solo immagini pubbliche della demo. Non attribuire all’esempio un risparmio o un prezzo pagato: non sono pubblicati.
 
-“The page and these 16 tests use the same rules. The tests ask questions about prices, wrong trains, repeat messages and unclear answers.”
+## Descrizione breve
 
-## 6. Buy a ticket in the story and stop the watch
-
-Press **I bought a ticket — stop**. Point out that the check button is now off. The original private watcher was also stopped after the traveller bought a ticket. No button in this demo buys anything.
-
-## 7. Say what is still pretend
-
-“This page acts out the timer, bot setup, price reads and Telegram delivery. It does not look up real prices or send real messages. Its notebook disappears when I reload. The original private helper had real price readers, saved notification state, a timer and Telegram. Those private parts are not included in this public teaching version.”
-
-Finish with: “A useful helper knows when to tell you something, and when to stay quiet.”
-
-## Before you show it
-
-Press **Start over**. Keep the “pretend” label visible. Show only the made-up data. Say what you actually built and checked. Use the [check record](QA.md) if someone asks for details.
-
-## A short description to copy
-
-> A little train-price playground. It checks a price twice and remembers which trains it already told you about. All data and messages are pretend. Built with JavaScript, with no extra packages to install.
+> Ho trasformato una ricerca manuale di biglietti in un monitor con avvisi Telegram: controlla i diretti dopo l’orario scelto, verifica due volte il prezzo e non ripete lo stesso messaggio. La demo pubblica racconta l’intero percorso con dati inventati.

@@ -1,51 +1,47 @@
-# The story behind Fare Signal
+# Il problema, le scelte e il risultato
 
-## A small everyday problem
+## 1. Non volevo controllare il prezzo tutto il giorno
 
-I wanted to find a train ticket below my budget. Looking at a booking website again and again took time.
+Dovevo comprare un biglietto per un viaggio in Germania. Seguivo un treno, ma vedevo il prezzo aumentare. Il mio obiettivo era semplice: trovare una partenza adatta sotto i 40 €, senza tornare continuamente sul sito.
 
-A private helper read the railway website, ran about every two hours on GitHub Actions, checked prices twice and sent real Telegram alerts. It remembered earlier notifications. Later, it also watched later direct trains. We bought a suitable ticket and switched the helper off.
+## 2. Ho allargato la ricerca, non il budget
 
-This public project tells that story with **made-up trains, stations and prices**. It does not share the private helper or its messages. It does not claim a particular saving or ticket price.
+Anche uno dei treni successivi poteva andare bene. Ho quindi chiesto al sistema di cercare tutti i collegamenti diretti dopo le 12:30, per la stessa data e tratta. Così non dipendevo dal prezzo di un solo treno.
 
-The public walkthrough now shows the whole path: make a pretend bot, press Start, wake the timer, check prices, look in the notebook, send a pretend Telegram message, then stop after buying a ticket. [See the real-versus-pretend map](JOURNEY.md).
+![Dal problema all’avviso e allo stop](../assets/problem-to-solution.svg)
 
-## A cheap price is only the start
+## 3. Ho trasformato la ricerca in un controllo automatico
 
-Imagine a friend says, “I found a €30 ticket!” You would want to know: “Is it my train? Is that still the price? Did you already tell me?”
+Il sistema originale usava GitHub Actions per partire circa ogni due ore. Non serviva tenere acceso il PC di casa. Cercava le partenze, controllava i filtri e verificava di avere letto il viaggio e il prezzo giusti.
 
-Those are the questions this demo asks before showing a message.
+Un orario programmato può partire in ritardo. Il monitor era un aiuto alla ricerca, non una garanzia di trovare ogni offerta.
 
-## Three simple choices
+## 4. Ho stabilito quando meritavo un messaggio
 
-### Check the train first
+Un prezzo basso da solo non bastava. Doveva appartenere al treno giusto, comparire in due letture concordanti ed essere strettamente inferiore a 40 €. Una risposta mancante o poco chiara non diventava un prezzo inventato.
 
-The date, stations, train and times must match. A cheap ticket for the wrong train does not help.
+Il quaderno degli avvisi ricordava i treni già segnalati. Lo stesso treno non doveva farmi arrivare lo stesso messaggio a ogni controllo. Se non era chiaro se un invio fosse riuscito, il sistema non lo ripeteva alla cieca.
 
-### Wait when unsure
+## 5. Telegram chiudeva il percorso
 
-If one check says €30 and the next says €35, the helper waits. If no answer comes back, it does not invent a price.
+Il risultato utile arrivava nella chat del bot. Non dovevo consultare un altro cruscotto. Leggevo l’avviso, aprivo il sito e decidevo se comprare. Le chiavi del bot restavano nei GitHub Secrets, fuori dal codice.
 
-Sending can be uncertain too. Imagine posting a letter, then losing the receipt. The letter might still arrive. Sending another straight away could give your friend two letters. The helper keeps that send marked “waiting” until it can be checked.
+L’immagine seguente è un esempio inventato, non una copia della chat privata e non il prezzo del nostro acquisto:
 
-### Remember what was said
+<p align="center"><img src="../assets/telegram-example.svg" width="520" alt="Avviso Telegram illustrato: un treno diretto a 34,90 euro è sotto il budget di 40 euro. Dati inventati."></p>
 
-The helper puts a tick beside a train after sending its message. Checking again does not send it again. A lower price for the same train does not erase the tick. Another train can get its own message.
+## 6. Abbiamo comprato un biglietto e spento il monitor
 
-The notebook is only held in memory here. A real helper would need to save it. [How it works](ARCHITECTURE.md) gives the exact rules.
+Abbiamo trovato una partenza successiva adatta e comprato il biglietto. Poi abbiamo fermato le notifiche. Il monitor non comprava biglietti e non prendeva decisioni al posto nostro.
 
-## Why the page looks this way
+Questo è il risultato che posso raccontare. Non pubblico un prezzo pagato, una cifra risparmiata o un tasso di successo non verificato.
 
-The controls, trains and message box sit together so you can see what your click did. Words explain each result; color is not the only clue. On a small screen, the parts stack one below another. The page follows the browser's reduced-motion setting.
+## 7. Ho preparato una versione pubblica da mostrare
 
-## What we left out
+La demo ripete la storia con dati inventati: crei il bot finto, premi Start, fai avanzare il timer, guardi i controlli, ricevi il messaggio simulato e fermi il monitor dopo l’acquisto immaginato.
 
-You need no account, keys or real Telegram bot. The demo has no visitor tracking. Plain JavaScript is enough for this little example, so there are no extra code packages to install.
+Le regole del prezzo e dei doppioni sono codice eseguibile, usato anche nei test. La ricerca ferroviaria, il timer e Telegram sono simulati nella pagina. Il lettore ferroviario privato, i segreti e la cronologia non sono pubblicati. [Qui trovi il confronto completo](JOURNEY.md).
 
-## How we checked it
+Il codice ha 16 prove automatiche. Le verifiche includono soglia esatta, treno sbagliato, letture diverse, controlli contemporanei, invio incerto, avvio del bot, stop e file unico per la presentazione. [Il resoconto delle verifiche](QA.md) ne spiega i limiti.
 
-We ask the code 16 test questions. For example: does exactly €40 fail a “below €40” rule? Does a second check stay quiet? What if two checks run together?
-
-We also tried the buttons in a browser and on a narrow screen. The [check record](QA.md) says what passed and where the checks stop.
-
-The lesson is simple: **a helpful message should be right, and it should not keep repeating itself.**
+**Il valore del progetto è il percorso intero: partire da un bisogno, cercare senza lavoro manuale continuo e avvisare solo quando c’è qualcosa su cui agire.**

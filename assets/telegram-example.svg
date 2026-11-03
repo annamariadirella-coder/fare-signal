@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="800" viewBox="0 0 640 800" role="img" aria-labelledby="title desc"><title id="title">Quando un treno scende sotto il budget</title><desc id="desc">Chat Telegram illustrata. Budget sotto 40 euro. Il treno inventato NF 208 costa 34,90 euro, parte alle 15:38 ed è diretto. Il prezzo è controllato due volte. Nessun invio reale.</desc><style>text{font-family:Arial,Helvetica,sans-serif}.muted{fill:#64736a}.ink{fill:#25352e}.green{fill:#226644}</style><rect width="640" height="800" rx="24" fill="#f2f4ee"/>
+<text x="32" y="43" font-size="16" letter-spacing="1.5" fill="#68776a">ESEMPIO ILLUSTRATO · DATI INVENTATI</text>
+<rect x="30" y="68" width="580" height="670" rx="24" fill="#e5ede1" stroke="#c4d0bf"/>
+<path d="M54 68H586Q610 68 610 92V163H30V92Q30 68 54 68" fill="#253c32"/>
+<circle cx="76" cy="115" r="23" fill="#b4d6be"/>
+<path d="M65 119L89 103L80 128L75 119L65 119Z" fill="#253c32"/>
+<text x="115" y="109" font-size="24" font-weight="700" fill="#fff">Fare Signal</text>
+<text x="115" y="137" font-size="17" fill="#c8decc">bot · chat Telegram simulata</text>
+<rect x="201" y="185" width="380" height="56" rx="14" fill="#cde5c4"/>
+<text x="224" y="220" font-size="20" fill="#29482c">Avvisami sotto i 40 €.</text>
+<rect x="55" y="264" width="526" height="388" rx="16" fill="#fffef9"/>
+<text x="78" y="299" font-size="17" fill="#236646" font-weight="700">FARE SIGNAL · AVVISO DI ESEMPIO</text>
+<text x="78" y="347" font-size="27" font-weight="700" fill="#25352e">Un treno è sotto il tuo budget!</text>
+<text x="78" y="416" font-size="62" font-weight="700" fill="#226644">34,90 €</text>
+<text x="78" y="454" font-size="22" fill="#25352e">Il tuo limite: meno di 40,00 €</text>
+<text x="78" y="496" font-size="22" fill="#25352e">NF 208 · diretto · 15:38 → 18:16</text>
+<text x="78" y="528" font-size="21" fill="#25352e">Northport Central → Linden Hbf</text>
+<text x="78" y="560" font-size="21" fill="#25352e">14 marzo 2027 · 1 adulto · 2ª classe</text>
+<path d="M78 580H554" stroke="#dbe2d5"/>
+<text x="78" y="610" font-size="20" fill="#226644">✓ Stesso treno e prezzo, controllati 2 volte.</text>
+<text x="78" y="638" font-size="18" fill="#64736a">Controlla il sito prima di comprare.</text>
+<text x="58" y="689" font-size="18" fill="#4b654a">L’acquisto lo fai tu. Il prezzo può cambiare.</text>
+<text x="58" y="720" font-size="17" fill="#64736a">Nessun messaggio reale è stato inviato.</text>
+<text x="32" y="774" font-size="17" fill="#64736a">Prezzo e viaggio d’esempio, non il biglietto acquistato.</text></svg>

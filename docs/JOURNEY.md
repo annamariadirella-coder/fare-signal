@@ -1,32 +1,40 @@
-# From “find me a ticket” to a message on a phone
+# Dal prezzo che saliva al messaggio sul telefono
 
-The project began with a real need. I wanted a train ticket below my budget without looking at the booking page all day.
+Il problema era concreto: volevo un biglietto sotto i 40 €, ma il prezzo del treno che seguivo aumentava. Controllare il sito continuamente richiedeva attenzione. Ho scelto di cercare anche i diretti successivi dopo le 12:30, nella stessa data e sulla stessa tratta.
 
-## The whole path
+![La storia in sei passaggi](../assets/problem-to-solution.svg)
 
-1. **Choose the trip.** Pick stations, a day, a time and a budget. The original watcher looked for direct trains after the chosen time.
-2. **Let a timer wake the helper.** GitHub Actions ran the private watcher about every two hours. The computer at home did not need to stay on. A scheduled run can start late; it is not an exact alarm clock.
-3. **Find trains and prices.** The private railway reader checked the search filters, passenger details, train and fare. If it could not read them clearly, it stopped rather than guessing.
-4. **Look again.** A second visit checked the same train and price. The helper waited between the reads.
-5. **Check the budget and notebook.** The price had to be below the limit. The helper remembered trains it had already sent, so it did not keep repeating itself.
-6. **Send through Telegram.** The bot sent the useful result to the chosen chat. Its key lived in GitHub Secrets, not in the code.
-7. **Buy the ticket, then stop.** The helper did not buy anything. We bought a suitable ticket ourselves and turned the private watcher off.
+## Il percorso del sistema originale
 
-## What you can try here
+1. **Scelgo il viaggio e il budget.** Il programma sa quali partenze sono accettabili.
+2. **Il timer avvia un controllo.** GitHub Actions lo eseguiva circa ogni due ore. Il PC di casa poteva restare spento. Gli orari programmati possono subire ritardi.
+3. **Il lettore cerca treni e prezzi.** Controlla percorso, data, orari, collegamento diretto e dettagli della tariffa. Se non può confermarli, non inventa un prezzo.
+4. **Una seconda lettura verifica il risultato.** Deve essere lo stesso treno, con lo stesso prezzo.
+5. **Il programma guarda il budget e il quaderno.** Il prezzo deve essere meno di 40 €. Se ha già segnalato quel treno, non ripete l’avviso.
+6. **Telegram mi raggiunge.** Il bot invia il viaggio e il prezzo alla mia chat. Posso aprire il sito e decidere se comprare. La chiave del bot rimane fuori dal codice.
+7. **Compro il biglietto e spengo il monitor.** È quello che abbiamo fatto dopo aver trovato una partenza successiva adatta. Il programma non ha comprato nulla.
 
-| Part | Public browser demo | Original private watcher |
+## Come appare il risultato
+
+<p align="center"><img src="../assets/telegram-example.svg" width="520" alt="Esempio inventato di avviso Telegram: un treno diretto costa 34,90 euro, meno del budget di 40 euro. Due letture concordanti."></p>
+
+Questo è un disegno con dati inventati. Non mostra la chat privata, il prezzo pagato o una cifra risparmiata.
+
+## Cosa puoi provare nel repository pubblico
+
+| Parte | Demo pubblica | Sistema originale privato |
 |---|---|---|
-| Choose a trip | Made-up trip, adjustable budget | Real configured trip |
-| Wake every two hours | Pretend clock, one click per wake-up | GitHub Actions schedule, now disabled |
-| Read railway prices | Made-up reads | Real browser visits |
-| Check twice and remember | Yes, while the page stays open | Yes, with saved notification state |
-| Telegram | Simulated setup, bot, message and receipt | Real alerts, now stopped |
-| Buy a ticket | A pretend “I bought a ticket” button | Done by the traveller |
+| Viaggio | Esempio inventato, budget regolabile | Viaggio configurato |
+| Timer | Pulsante che fa passare due ore finte | GitHub Actions, ora spento |
+| Prezzi | Due letture inventate | Visite reali al sito ferroviario |
+| Regole e quaderno | Codice usato anche dai test, memoria nella pagina | Doppia verifica e stato delle notifiche salvato |
+| Telegram | Bot, Start, chat e ricevute simulati | Bot e avvisi reali, ora fermi |
+| Acquisto e stop | Pulsante finto che ferma la demo | Acquisto fatto da noi, poi monitor disattivato |
 
-This table matters. A walkthrough of a real project can use made-up data safely. It should still say which parts are pretend and which parts run for real.
+Il codice pubblico non contiene il lettore ferroviario privato. Puoi installare e presentare la demo completa; non puoi usarla da sola per cercare prezzi reali o mandare messaggi al telefono.
 
-## A simple way to present your work
+## Come dirlo con chiarezza
 
-“I built a train-price watcher with a timer, two price checks, repeat-message protection and Telegram alerts. We used the private version to help find a ticket and stopped it after buying one. This public version lets you walk through the whole idea, including Telegram, with made-up data and messages.”
+«Ho costruito un monitor dei prezzi dei treni con controlli programmati, doppia verifica, protezione dai messaggi ripetuti e avvisi Telegram. Lo abbiamo usato per trovare un biglietto e poi spento. Questa versione pubblica permette di provare tutto il percorso con dati e messaggi simulati.»
 
-The private source, keys, chat numbers, tickets and messages are not published here. The public demo is a clean rebuild, not a claim that the original railway reader can be installed from this repo.
+Chiavi, numeri di chat, biglietti e messaggi privati restano fuori da questo progetto.

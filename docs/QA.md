@@ -1,5 +1,9 @@
 # What we checked
 
+## Illustrated story update
+
+The main guide and case study now start with the actual user problem and outcome, in Italian. The Telegram illustration uses the same invented NF 208 journey and EUR 34.90 price as the demo. It is not a real message, paid fare or claimed saving. Both SVG drawings have text alternatives. The portable-file test checks that illustrations are embedded rather than left as separate image files.
+
 Prepared and checked on **3 November 2026**. Published as [Fare Signal](https://github.com/annamariadirella-coder/fare-signal), with a [live demo](https://annamariadirella-coder.github.io/fare-signal/).
 
 ## Questions the computer checked
