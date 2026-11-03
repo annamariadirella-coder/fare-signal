@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fare Signal: an interactive, fictional rail-fare monitoring demo. Verify twice. Notify once.">
+  <meta name="theme-color" content="#f5f3ed">
+  <meta property="og:title" content="Fare Signal — less noise. Better fares.">
+  <meta property="og:description" content="A hands-on engineering case study in trustworthy alerts. All journeys and prices are fictional.">
+  <title>Fare Signal — less noise. Better fares.</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="demo/styles.css">
+  <script type="module" src="demo/app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#playground">Skip to interactive demo</a>
+  <header class="masthead wrap">
+    <a class="brand" href="#" aria-label="Fare Signal home"><span class="brand-mark" aria-hidden="true">↗</span> fare<span class="brand-light">signal</span><span class="brand-period">.</span></a>
+    <nav aria-label="Main navigation"><a href="#playground">Playground</a><a href="#principles">The thinking</a><a href="README.md">Repository guide <span aria-hidden="true">↗</span></a></nav>
+    <span class="edition"><span class="dot"></span> An open-source case study</span>
+  </header>
+
+  <main>
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div><p class="eyebrow"><span class="tiny-line"></span> SMALL AUTOMATION. REAL-WORLD THINKING.</p>
+        <h1 id="hero-title">Less noise.<br><em>Better fares.</em></h1>
+        <p class="hero-copy">A good alert earns your attention.<br>Explore a rail-fare monitor that checks twice, handles uncertainty,<br class="desktop"> and knows when to stay quiet.</p>
+        <a class="text-link" href="#playground">Take it for a spin <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="route-label">FROM THE EVERYDAY<br>TO SOMETHING USEFUL</div>
+        <svg viewBox="0 0 440 230" fill="none"><path d="M18 184H164C245 184 192 55 279 55H420" stroke="#d6d5cd" stroke-width="22"/><path d="M18 184H164C245 184 192 55 279 55H420" stroke="#eb602f" stroke-width="3" stroke-dasharray="4 8"/><circle cx="75" cy="184" r="10" fill="#f5f3ed" stroke="#222a25" stroke-width="3"/><circle cx="368" cy="55" r="10" fill="#eb602f"/><circle cx="368" cy="55" r="4" fill="#fff"/></svg>
+        <div class="art-ticket"><span>PRICE CONFIRMED</span><strong>€34<span>.90</span></strong><small>Two reads. One signal. <b>↗</b></small></div>
+        <span class="art-caption">Illustrative fare · fictional network</span>
+      </div>
+    </section>
+
+    <section class="playground wrap" id="playground" aria-labelledby="demo-title">
+      <div class="section-heading"><div><span class="section-index">01 /</span><h2 id="demo-title">The working demo</h2></div><span class="demo-label"><span class="dot"></span> SIMULATED DATA · NO LIVE CONNECTIONS</span></div>
+      <div class="app-shell">
+        <div class="app-topbar"><div class="workspace-name"><span class="app-logo" aria-hidden="true">↗</span> Fare watch <span class="slash">/</span> <span class="workspace-sub">Weekend escape</span></div><span class="sandbox"><span class="dot"></span> Local sandbox</span></div>
+        <div class="app-grid">
+          <aside class="controls" aria-label="Demo controls">
+            <p class="panel-kicker">YOUR WATCH</p>
+            <div class="station-stack"><span class="route-stem" aria-hidden="true"></span><div><small>FROM</small><strong>Northport Central</strong></div><div><small>TO</small><strong>Linden Hbf</strong></div></div>
+            <p class="date-line">Sun, 14 Mar 2027 <span>↗</span></p>
+            <div class="rule-tags"><span>After 12:30</span><span>Direct only</span><span>1 adult · 2nd class</span></div>
+            <div class="budget"><label for="budget">Notify me below <output id="budget-value" for="budget">€40</output></label><input id="budget" type="range" min="20" max="60" step="1" value="40"><div class="range-limits"><span>€20</span><span>€60</span></div></div>
+            <div class="scenario-field"><label for="scenario">TRY A SCENARIO</label><select id="scenario"><option value="drop">A fare drops</option><option value="mismatch">Prices disagree</option><option value="outage">Source unavailable</option><option value="uncertain">Delivery uncertain</option></select></div>
+            <p class="scenario-note" id="scenario-note"></p>
+            <button class="primary-button" id="run"><span aria-hidden="true">↻</span> <span id="run-label">Run verification</span></button>
+            <button class="reset-button" id="reset">Reset sandbox</button>
+            <div class="privacy-note"><span aria-hidden="true">◈</span><span>No account. No tokens.<br>Everything stays in this tab.</span></div>
+          </aside>
+
+          <div class="results-panel">
+            <div class="results-heading"><div><p class="panel-kicker">THE AFTERNOON LINEUP</p><h3>Four ways to get there<span>.</span></h3></div><span class="count-label">4 direct trains</span></div>
+            <div class="summary-strip"><div><span class="metric-label">LOWEST FIXTURE FARE</span><strong id="lowest">€29.90</strong></div><div><span class="metric-label">YOUR STRICT LIMIT</span><strong id="limit">&lt; €40.00</strong></div><div><span class="metric-label">SIMULATED ALERTS</span><strong id="alert-count">0 <small>delivered</small></strong></div></div>
+            <div class="table-heading" aria-hidden="true"><span>JOURNEY</span><span>ILLUSTRATIVE TREND</span><span>FARE / RESULT</span></div>
+            <div id="journeys" class="journeys" aria-label="Fictional train results"></div>
+            <div class="verification-box"><div class="verification-title"><span class="status-dot" id="scan-dot"></span><strong id="verification-title">Ready when you are</strong><span id="scan-count">Scan 00</span></div><ol class="verification-steps" aria-label="Verification stages"><li id="step-1"><span>01</span> Read source A</li><li id="step-2"><span>02</span> Independently recheck</li><li id="step-3"><span>03</span> Decide &amp; deduplicate</li></ol><p id="verification-detail">Two observations, at least 20 virtual seconds apart. No real waiting required.</p></div>
+            <div class="results-footnote"><span>● &nbsp;Fictional network, fares and timestamps.</span><span>Arrival after midnight shown as +1.</span></div>
+          </div>
+
+          <aside class="inbox-panel" aria-labelledby="inbox-title"><div class="inbox-heading"><span class="inbox-icon" aria-hidden="true">↗</span><div><p class="panel-kicker">THE PAYOFF</p><h3 id="inbox-title">A quieter inbox</h3></div><span id="inbox-badge">0</span></div><p class="inbox-description">A Telegram-style preview.<br>No messages actually leave this page.</p><div id="inbox" class="inbox"><div class="empty-inbox"><div class="empty-icon" aria-hidden="true">✉</div><strong>Nothing to interrupt you.</strong><p>Run a verification. Only matching,<br>qualifying fares earn a message.</p></div></div><div class="inbox-bottom"><span class="dot"></span> Verified twice. Delivered once.</div></aside>
+        </div>
+        <div class="app-bottom"><span><span class="dot"></span> DEMO MODE</span><span id="run-summary" role="status" aria-live="polite" aria-atomic="true">Choose a scenario and run a scan.</span><span>NO NETWORK REQUESTS</span></div>
+      </div>
+      <div class="demo-caption"><span>Tip: run the same scan twice. The second time, the inbox stays quiet.</span><span>Built to make edge cases visible.</span></div>
+    </section>
+
+    <section class="principles wrap" id="principles" aria-labelledby="principles-title"><div class="principles-intro"><p class="eyebrow">02 / THE THINKING BEHIND THE SIGNAL</p><h2 id="principles-title">Trust is a<br><em>product feature.</em></h2><p>This started with a simple problem: finding a better train fare without checking all day. The interesting part was deciding when an alert deserves to be sent.</p><a class="text-link" href="docs/CASE_STUDY.md">Read the case study <span aria-hidden="true">↗</span></a></div><div class="principle-list"><article><span>01</span><div><h3>Confirm the journey, then the price.</h3><p>Two equal numbers mean little if they belong to different trains. Date, route, service and times are verified together.</p></div><b aria-hidden="true">↗</b></article><article><span>02</span><div><h3>Uncertainty is a state, not a bargain.</h3><p>Missing data and conflicting reads stop the alert. An ambiguous delivery is held for review instead of being retried blindly.</p></div><b aria-hidden="true">↗</b></article><article><span>03</span><div><h3>Useful once. Annoying twice.</h3><p>A journey-level delivery ledger prevents repeated alerts, even when two checks happen at the same time.</p></div><b aria-hidden="true">↗</b></article></div></section>
+    <section class="under-hood wrap"><div><p class="eyebrow">03 / UNDER THE HOOD</p><h2>Small surface.<br>Thoughtful foundations.</h2></div><div class="tech-notes"><p><strong>Plain JavaScript.</strong> One verification engine, shared by the browser and the test suite. No framework or runtime dependencies.</p><p><strong>Honest boundaries.</strong> A local fixture source and a simulated transport. No scraping, credentials or live integrations in this public demo.</p><a class="text-link" href="docs/ARCHITECTURE.md">Explore the architecture <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="#">fare<span class="brand-light">signal</span><span class="brand-period">.</span></a><p>An everyday problem, turned into a considered little tool.</p><a href="LICENSE">MIT licensed <span aria-hidden="true">↗</span></a></footer>
+  <noscript><p class="noscript">Enable JavaScript to use the simulated monitor. The case study and repository documentation remain available.</p></noscript>
+</body>
+</html>
