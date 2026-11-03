@@ -23,14 +23,26 @@ Think of the last step as a notebook. Once the helper has told you, it puts a ti
 
 ![The train-price game](assets/demo-desktop.png)
 
-## Try it in 30 seconds
+## Walk through the whole story
 
 Open the [demo](https://annamariadirella-coder.github.io/fare-signal/). Leave the limit at **€40**.
 
-1. Press **Check prices**. Two pretend messages appear.
-2. Press **Check again**. No new messages appear: the helper remembers.
-3. Choose **The prices do not match**. Check again. The helper waits because it is unsure.
-4. Press **Start over** to empty the notebook and play again.
+1. Press **Make a pretend bot**. This acts out making a Telegram bot.
+2. Press **Press Start — pretend chat**. The chat shows your pretend `/start` and the bot's hello.
+3. Press **Start the pretend watch**. The helper is ready for its timer.
+4. Press **Jump 2 hours & check**. The clock moves. Follow the six steps: wake up, find trains, check twice, check the notebook, send to Telegram, save the receipt. Two pretend messages appear.
+5. Open **Open the notebook**. See both price reads, each decision and the “told you” marks.
+6. Jump two hours again. No new messages appear: the helper remembers.
+7. Try **The prices do not match** or **Did the message arrive?**. The helper waits when it is unsure.
+8. Press **I bought a ticket — stop**. The watch stops. **Start over** lets you replay from the bot setup.
+
+The clock, bot setup, prices, chat and receipts are all pretend. Nothing runs in the background after you close this page.
+
+## Built from a real end-to-end project
+
+The original private project had a real railway reader, a GitHub Actions timer, two price checks, a saved message notebook and Telegram alerts. We bought a suitable ticket and stopped it. This public version lets you see the whole journey safely, with made-up data.
+
+Read [from search to a phone message](docs/JOURNEY.md) for a clear map of what was real in the private project and what is simulated here. The private railway reader and its keys are not published in this repo.
 
 At a €40 limit, **€39.99 is low enough. €40.00 is not.** “Below” means less than, not equal to.
 
@@ -59,7 +71,7 @@ Run these from the project folder:
 | Type this | What it does |
 |---|---|
 | `npm start` | Opens a small local server so your browser can load the demo. |
-| `npm test` | Checks 13 examples to see whether the rules behave as expected. |
+| `npm test` | Checks 15 examples to see whether the rules behave as expected. |
 | `npm run check` | Checks code spelling, local page files and a few known secret patterns. |
 | `npm run build` | Puts the website files in a folder called `dist/`. |
 | `npm run standalone` | Makes one HTML file you can open without Node or a server. |
@@ -77,7 +89,7 @@ For the normal version, use `npm start`. Double-clicking `index.html` may stop t
 | No price comes back | A missing answer is not a free ticket. No message. |
 | Did the message arrive? | The pretend sender gives no clear answer. The helper pauses instead of sending twice. |
 
-Moving the price slider keeps the notebook. Choosing a new example, pressing **Start over**, or reloading the page empties it. The page saves nothing after you leave.
+The bot must be made, started and connected before a check can run. Buying a ticket stops the pretend watch. Moving the price slider keeps the notebook. Choosing a new example, pressing **Start over**, or reloading the page empties it. Start over also resets the bot and clock; choosing a new example keeps their current state. The page saves nothing after you leave.
 
 ## Where things live
 
@@ -87,6 +99,7 @@ A **repository**, or **repo**, is just a project folder saved on GitHub.
 |---|---|
 | `src/monitor.mjs` | The helper's rules and notebook. |
 | `demo/fixtures.mjs` | The made-up trains and prices. |
+| `demo/journey.mjs` | The pretend bot, clock and stop button. |
 | `demo/app.mjs` | The part that connects buttons to the rules. |
 | `demo/styles.css` | The page's clothes: colors, sizes and layout. |
 | `tests/monitor.test.mjs` | Little questions that check the rules. |
@@ -96,6 +109,7 @@ A **repository**, or **repo**, is just a project folder saved on GitHub.
 
 ## Read more
 
+- [The whole journey, including Telegram](docs/JOURNEY.md).
 - [The story](docs/CASE_STUDY.md): why this little helper exists.
 - [How it works](docs/ARCHITECTURE.md): the rules, with examples and exact details.
 - [Show a friend](docs/PRESENTING.md): a short demo you can follow.

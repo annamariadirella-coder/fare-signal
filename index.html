@@ -23,7 +23,7 @@
     <section class="hero wrap" aria-labelledby="hero-title">
       <div><p class="eyebrow"><span class="tiny-line"></span> A LITTLE HELPER FOR A BIG SEARCH.</p>
         <h1 id="hero-title">Less noise.<br><em>Better fares.</em></h1>
-        <p class="hero-copy">Imagine a helper looking for a cheaper train ticket.<br>It checks the price twice. If it is unsure, it waits.<br class="desktop"> If it already told you, it stays quiet.</p>
+        <p class="hero-copy">Imagine a helper looking for a cheaper train ticket.<br>It checks the price twice. If it is unsure, it waits.<br class="desktop"> Follow the whole story: timer, price checks, notebook and Telegram.</p>
         <a class="text-link" href="#playground">Try it now <span aria-hidden="true">↓</span></a>
       </div>
       <div class="hero-art" aria-hidden="true">
@@ -36,6 +36,17 @@
 
     <section class="playground wrap" id="playground" aria-labelledby="demo-title">
       <div class="section-heading"><div><span class="section-index">01 /</span><h2 id="demo-title">Try the little helper</h2></div><span class="demo-label"><span class="dot"></span> PRETEND TRAINS · NO REAL MESSAGES</span></div>
+
+      <div class="story-intro"><p><strong>A real project, retold with pretend data.</strong> The original helper checked real train prices and sent Telegram alerts. We bought a ticket and stopped it. Here, you can play through every step without a bot, a key or a phone.</p><a class="text-link" href="docs/JOURNEY.md">Read the whole story ↗</a></div>
+      <div class="setup-grid" aria-label="Pretend bot setup">
+        <article><span class="panel-kicker">1 / MAKE A BOT</span><h3>A little messenger</h3><p>In the real project, BotFather made our Telegram bot. Here, one click makes a pretend one. No key needed.</p><button id="make-bot" class="story-button">Make a pretend bot</button></article>
+        <article><span class="panel-kicker">2 / SAY HELLO</span><h3>Press Start in its chat</h3><p>A real bot needs you to say hello first. This button acts out that step. It does not open Telegram.</p><button id="start-bot" class="story-button" disabled>Press Start — pretend chat</button><p id="bot-state" role="status">No pretend bot yet. Make one first.</p></article>
+        <article><span class="panel-kicker">3 / TURN THE WATCH ON</span><h3>Let the helper look</h3><p>The original timer ran on GitHub, about every two hours. Here, you move a pretend clock with a button.</p><button id="start-watch" class="story-button" disabled>Start the pretend watch</button><p id="watch-state" role="status">The watch is off.</p></article>
+      </div>
+      <div class="clock-bar"><div><span class="panel-kicker">PRETEND CLOCK</span><strong id="clock">Day 1 · 08:00</strong></div><p>One click on “Jump 2 hours &amp; check” acts out the next wake-up. No real timer runs in this page.</p><button id="stop-watch" class="story-button" disabled>I bought a ticket — stop</button></div>
+      <p id="stop-note" class="stop-note" hidden>All done. The pretend watch is off. Its messages stay here so you can read them. Press Start over to play again.</p>
+      <ol class="whole-trail" aria-label="The whole path"><li id="trail-1">Timer wakes up</li><li id="trail-2">Find trains</li><li id="trail-3">Check twice</li><li id="trail-4">Check notebook</li><li id="trail-5">Send to Telegram</li><li id="trail-6">Save the receipt</li></ol>
+      <p id="trail-note" class="trail-note" role="status">Make a pretend bot, press Start, then turn the watch on.</p>
       <div class="app-shell">
         <div class="app-topbar"><div class="workspace-name"><span class="app-logo" aria-hidden="true">↗</span> Fare watch <span class="slash">/</span> <span class="workspace-sub">Weekend escape</span></div><span class="sandbox"><span class="dot"></span> Pretend example</span></div>
         <div class="app-grid">
@@ -47,7 +58,7 @@
             <div class="budget"><label for="budget">Tell me below <output id="budget-value" for="budget">€40</output></label><input id="budget" type="range" min="20" max="60" step="1" value="40"><div class="range-limits"><span>€20</span><span>€60</span></div></div>
             <div class="scenario-field"><label for="scenario">CHOOSE AN EXAMPLE</label><select id="scenario"><option value="drop">A cheaper ticket</option><option value="mismatch">The prices do not match</option><option value="outage">No price comes back</option><option value="uncertain">Did the message arrive?</option></select></div>
             <p class="scenario-note" id="scenario-note"></p>
-            <button class="primary-button" id="run"><span aria-hidden="true">↻</span> <span id="run-label">Check prices</span></button>
+            <button class="primary-button" id="run" disabled><span aria-hidden="true">↻</span> <span id="run-label">Jump 2 hours &amp; check</span></button>
             <button class="reset-button" id="reset">Start over</button>
             <div class="privacy-note"><span aria-hidden="true">◈</span><span>No account. No secret keys.<br>Everything stays in this tab.</span></div>
           </aside>
@@ -61,11 +72,13 @@
             <div class="results-footnote"><span>● &nbsp;All trains, prices and check times are made up.</span><span> +1 means the train arrives the next day.</span></div>
           </div>
 
-          <aside class="inbox-panel" aria-labelledby="inbox-title"><div class="inbox-heading"><span class="inbox-icon" aria-hidden="true">↗</span><div><p class="panel-kicker">THE MESSAGE BOX</p><h3 id="inbox-title">A quieter inbox</h3></div><span id="inbox-badge">0</span></div><p class="inbox-description">A pretend Telegram message box.<br>No messages actually leave this page.</p><div id="inbox" class="inbox"><div class="empty-inbox"><div class="empty-icon" aria-hidden="true">✉</div><strong>Nothing to interrupt you.</strong><p>Press Check prices. A message appears<br>only when the price passes the rules.</p></div></div><div class="inbox-bottom"><span class="dot"></span> Checked twice. Told once.</div></aside>
+          <aside class="inbox-panel" aria-labelledby="inbox-title"><div class="inbox-heading"><span class="inbox-icon" aria-hidden="true">↗</span><div><p class="panel-kicker">THE MESSAGE BOX</p><h3 id="inbox-title">Your pretend Telegram chat</h3></div><span id="inbox-badge">0</span></div><p class="inbox-description">A pretend Telegram message box.<br>No messages actually leave this page.</p><p id="chat-setup" class="chat-setup">First, make the pretend bot.</p><div id="inbox" class="inbox"><div class="empty-inbox"><div class="empty-icon" aria-hidden="true">✉</div><strong>Nothing to interrupt you.</strong><p>Jump two hours. A message appears<br>only when the price passes the rules.</p></div></div><div class="inbox-bottom"><span class="dot"></span> Checked twice. Told once.</div></aside>
         </div>
-        <div class="app-bottom"><span><span class="dot"></span> DEMO MODE</span><span id="run-summary" role="status" aria-live="polite" aria-atomic="true">Choose an example and press Check prices.</span><span>NO REAL PRICE CHECKS</span></div>
+        <div class="app-bottom"><span><span class="dot"></span> DEMO MODE</span><span id="run-summary" role="status" aria-live="polite" aria-atomic="true">Choose an example and jump two hours.</span><span>NO REAL PRICE CHECKS</span></div>
       </div>
-      <div class="demo-caption"><span>Tip: check twice. The second time, no new messages appear.</span><span>See what happens when things go wrong.</span></div>
+
+      <details class="evidence-box"><summary>Open the notebook: what did each check see?</summary><p>Read A and Read B are made-up prices for the same train, 20 pretend seconds apart. A receipt means our pretend sender answered. It does not mean a person read the message.</p><div class="evidence-scroll"><table><thead><tr><th>Train</th><th>Read A</th><th>Read B</th><th>What the helper decided</th><th>Notebook</th></tr></thead><tbody id="evidence"></tbody></table></div><p>Run a check to fill this notebook. It stays only while this page is open.</p></details>
+      <div class="demo-caption"><span>Tip: jump two hours again. The notebook stops repeated messages.</span><span>See what happens when things go wrong.</span></div>
     </section>
 
     <section class="principles wrap" id="principles" aria-labelledby="principles-title"><div class="principles-intro"><p class="eyebrow">02 / WHY THE HELPER WORKS THIS WAY</p><h2 id="principles-title">A helper should<br><em>earn your trust.</em></h2><p>I wanted a cheaper train ticket without looking all day. A helper could look for me. But first, it needed rules about when to tell me.</p><a class="text-link" href="docs/CASE_STUDY.md">Read the story <span aria-hidden="true">↗</span></a></div><div class="principle-list"><article><span>01</span><div><h3>Is it the right train?</h3><p>Two tickets can both cost €30 but belong to different trains. Check the train, stations, date and times too.</p></div><b aria-hidden="true">↗</b></article><article><span>02</span><div><h3>Not sure? Wait.</h3><p>No price? Two different prices? Wait. Not sure a message arrived? Check what happened before sending it again.</p></div><b aria-hidden="true">↗</b></article><article><span>03</span><div><h3>Remember what you said.</h3><p>The helper keeps a little notebook. It puts a tick beside a train it already told you about, so it does not tell you twice.</p></div><b aria-hidden="true">↗</b></article></div></section>

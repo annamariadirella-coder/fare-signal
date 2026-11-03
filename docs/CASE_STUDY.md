@@ -4,9 +4,11 @@
 
 I wanted to find a train ticket below my budget. Looking at a booking website again and again took time.
 
-A private helper watched prices. Later, it also watched later direct trains. We bought a suitable ticket and switched the helper off.
+A private helper read the railway website, ran about every two hours on GitHub Actions, checked prices twice and sent real Telegram alerts. It remembered earlier notifications. Later, it also watched later direct trains. We bought a suitable ticket and switched the helper off.
 
 This public project tells that story with **made-up trains, stations and prices**. It does not share the private helper or its messages. It does not claim a particular saving or ticket price.
+
+The public walkthrough now shows the whole path: make a pretend bot, press Start, wake the timer, check prices, look in the notebook, send a pretend Telegram message, then stop after buying a ticket. [See the real-versus-pretend map](JOURNEY.md).
 
 ## A cheap price is only the start
 
@@ -42,7 +44,7 @@ You need no account, keys or real Telegram bot. The demo has no visitor tracking
 
 ## How we checked it
 
-We ask the code 13 test questions. For example: does exactly €40 fail a “below €40” rule? Does a second check stay quiet? What if two checks run together?
+We ask the code 15 test questions. For example: does exactly €40 fail a “below €40” rule? Does a second check stay quiet? What if two checks run together?
 
 We also tried the buttons in a browser and on a narrow screen. The [check record](QA.md) says what passed and where the checks stop.
 

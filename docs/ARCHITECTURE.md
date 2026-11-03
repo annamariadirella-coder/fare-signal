@@ -2,6 +2,12 @@
 
 Imagine a helper with a notebook. It checks a train price twice. If everything looks right, it puts a message in a pretend inbox. Then it writes “told you” in its notebook.
 
+## First, start the pretend bot
+
+`demo/journey.mjs` keeps the story in order. Make a bot, press Start, then start the watch. Only then can the clock jump. Each click advances it by two hours and runs one check. There is no background timer. Buying a ticket stops it until you start over.
+
+The six-step trail shows the timer, train search, second read, notebook, Telegram send and receipt. Open the notebook to inspect both made-up reads and each decision. The `/start`, hello and receipts are simulated; no Telegram request is made.
+
 ## Follow one ticket
 
 ```mermaid
@@ -20,7 +26,7 @@ The page and the tests use the **same rules**. This helps us check the code peop
 
 Two tickets can both cost €30 and still belong to different trains. The helper checks the train's name, stations, date, leaving time, arrival time and whether you need to change trains.
 
-In the code, `fingerprint()` makes a label from those details. The label includes `id`, `train`, `from`, `to`, `date`, `departure`, `arrival` and `direct`. Both price checks must have the same label as the chosen train.
+In the code, `fingerprint()` makes a label from those details. The label includes `id`, `train`, `from`, `to`, `date`, `departure`, `arrival` and `direct`. Both price checks must have the same label as the chosen train. The visible pretend clock explains the two-hour schedule; the price reads use a separate fixture clock to keep a 20-second gap. Neither is a real railway timestamp.
 
 Only direct trains on the chosen route and day, leaving **after** the chosen time, can pass. A train at exactly 12:30 does not pass a rule saying “after 12:30.”
 

@@ -4,11 +4,13 @@ You can show the project in about three minutes. Open the [demo](https://annamar
 
 ## 1. Tell the little story
 
-“I wanted a cheaper train ticket without checking a website all day. This is a pretend example of a helper that checks for me. All these trains and prices are made up.”
+“I built a helper that checked real train prices, ran about every two hours and sent Telegram alerts. We bought a ticket and stopped it. This public version shows the whole journey with made-up data.”
 
-## 2. Show a useful message
+## 2. Start the pretend bot, then show a message
 
-Choose **A cheaper ticket**, keep **€40**, and press **Check prices**.
+Press **Make a pretend bot**, then **Press Start — pretend chat**, then **Start the pretend watch**. Show the `/start` and hello in the chat.
+
+Choose **A cheaper ticket**, keep **€40**, and press **Jump 2 hours & check**. Follow the six steps from timer to Telegram receipt.
 
 “The helper sees the same price twice. It checks that this is the right train. Two tickets cost less than €40, so two pretend messages appear. Nothing goes to Telegram.”
 
@@ -16,7 +18,7 @@ The two reads are 20 pretend seconds apart. The short animation is not a real li
 
 ## 3. Show its memory
 
-Press **Check again**.
+Open **Open the notebook** to show the two price reads and the “told you” marks. Then press **Jump 2 hours & check** again.
 
 “No new messages! The helper has a little notebook. It remembers which trains it already told us about.”
 
@@ -38,11 +40,15 @@ If your friend wants to see the code, open `src/monitor.mjs`. That file holds th
 npm test
 ```
 
-“The page and these 13 tests use the same rules. The tests ask questions about prices, wrong trains, repeat messages and unclear answers.”
+“The page and these 15 tests use the same rules. The tests ask questions about prices, wrong trains, repeat messages and unclear answers.”
 
-## 6. Say what is still pretend
+## 6. Buy a ticket in the story and stop the watch
 
-“This page does not look up real prices or send real messages. Its notebook disappears when I reload. A real helper needs real price readers, a saved notebook, a timer and a safe message sender.”
+Press **I bought a ticket — stop**. Point out that the check button is now off. The original private watcher was also stopped after the traveller bought a ticket. No button in this demo buys anything.
+
+## 7. Say what is still pretend
+
+“This page acts out the timer, bot setup, price reads and Telegram delivery. It does not look up real prices or send real messages. Its notebook disappears when I reload. The original private helper had real price readers, saved notification state, a timer and Telegram. Those private parts are not included in this public teaching version.”
 
 Finish with: “A useful helper knows when to tell you something, and when to stay quiet.”
 

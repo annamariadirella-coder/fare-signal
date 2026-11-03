@@ -5,7 +5,7 @@ Prepared and checked on **3 November 2026**. Published as [Fare Signal](https://
 ## Questions the computer checked
 
 - On our computer, we used Node.js 24.19.0.
-- All 13 test questions passed using `node --test`.
+- All 15 test questions passed using `node --test`.
 - The code spelling checks passed. The page could find its local files.
 - The check found none of the secret or private-project patterns it looks for. It only knows a few patterns, so a person still needs to review the files.
 - The website files were packed into `dist/` successfully.
@@ -13,7 +13,13 @@ Prepared and checked on **3 November 2026**. Published as [Fare Signal](https://
 
 GitHub [CI workflow](https://github.com/annamariadirella-coder/fare-signal/actions) passed all 13 tests, source checks and static build on both Node 22 and Node 24. The [Pages deployment](https://github.com/annamariadirella-coder/fare-signal/actions) also succeeded. The linked workflow shows the public verification results.
 
-## Things we tried in the browser
+## Full-story update
+
+The local suite now has 15 passing tests. Two new questions check the bot → Start → watch order and that buying a ticket stops all future pretend wake-ups.
+
+In the browser, we checked bot setup, the 08:00 → 10:00 clock jump, two first messages, a second jump with two repeats stopped, the notebook's two reads, and the stop button disabling further checks. We also checked the setup on a narrow screen and saw no sideways page overflow. Different-price reads produced no messages and four held decisions.
+
+## Things we tried in the first version
 
 We opened the first version in a browser and tried these steps. The table uses the new, simpler button names; the rules are the same:
 

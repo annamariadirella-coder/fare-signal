@@ -8,9 +8,10 @@ const stripImports = code => code.replace(/^import .*;\n/gm, '');
 const engine = stripExports(await text('src/monitor.mjs'));
 const fixtures = stripExports(stripImports(await text('demo/fixtures.mjs'))).replace(/\bsettings\b/g, 'defaults');
 const app = stripImports(await text('demo/app.mjs'));
+const journey = stripExports(await text('demo/journey.mjs'));
 const icon = 'data:image/svg+xml,' + encodeURIComponent(await text('assets/favicon.svg'));
 html = html.replace('<link rel="stylesheet" href="demo/styles.css">', `<style>${css}</style>`)
-  .replace('<script type="module" src="demo/app.mjs"></script>', `<script type="module">\n${engine}\n${fixtures}\n${app}\n</script>`)
+  .replace('<script type="module" src="demo/app.mjs"></script>', `<script type="module">\n${engine}\n${fixtures}\n${journey}\n${app}\n</script>`)
   .replace('href="assets/favicon.svg"', `href="${icon}"`)
   .replace(/href="(?:README\.md|LICENSE|docs\/[^\"]+)"/g, 'href="#principles"');
 await writeFile(new URL('fare-signal-demo.html', root), html);

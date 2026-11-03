@@ -1,5 +1,14 @@
 # What changed
 
+## The whole journey — 2026-11-03
+
+- Added pretend bot setup, Start, watch activation and a two-hour clock you control.
+- Added a six-step trail from timer wake-up to Telegram receipt.
+- Added a notebook showing the two price reads, decisions and message memory.
+- Added a “ticket bought” stop button and two story-state tests (15 tests total).
+- Explained the original real private watcher and this simulated public version side by side.
+- Kept all Telegram messages simulated; no tokens or real sends are used.
+
 ## Easier words — 2026-11-03
 
 - Rewrote the guides with short sentences and everyday examples.
