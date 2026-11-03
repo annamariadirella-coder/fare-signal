@@ -1,8 +1,13 @@
 # What changed
 
+## English throughout — 2026-11-03
+
+- Made the main guide, case study, journey guide, presentation guide, website story and both illustrations English.
+- Kept the problem, outcome and Telegram example clear and simple.
+
 ## The problem comes first — 2026-11-03
 
-- Rebuilt the main guide in Italian around the rising fare, wider direct-train search, budget, Telegram alert, purchase and stop.
+- Rebuilt the main guide in plain English around the rising fare, wider direct-train search, budget, Telegram alert, purchase and stop.
 - Added a readable Telegram example and a six-part story illustration, with text alternatives.
 - Put the problem, solution and Telegram example before the interactive setup on the website.
 - Included the illustration in the portable one-file demo, with a check that no image file is left outside it.

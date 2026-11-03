@@ -11,7 +11,7 @@ for (const name of ['index.html', 'demo', 'src', 'assets', 'docs', 'README.md', 
 }
 // A new page must not reuse an older cached controller or stylesheet after publication.
 let html = await readFile(new URL('index.html', dist), 'utf8');
-for (const asset of ['demo/app.mjs', 'demo/styles.css']) {
+for (const asset of ['demo/app.mjs', 'demo/styles.css', 'assets/telegram-example.svg']) {
   const hash = createHash('sha256').update(await readFile(new URL(asset, dist))).digest('hex').slice(0, 12);
   html = html.replaceAll(`"${asset}"`, `"${asset}?v=${hash}"`);
 }

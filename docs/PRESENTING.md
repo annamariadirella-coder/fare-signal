@@ -1,46 +1,46 @@
-# Come raccontare Fare Signal in tre minuti
+# Present Fare Signal in three minutes
 
-Apri la [storia con l’esempio Telegram](https://annamariadirella-coder.github.io/fare-signal/#story). Parti dal problema, prima dei pulsanti.
+Open the [story and Telegram example](https://annamariadirella-coder.github.io/fare-signal/#story). Start with the problem, before showing the buttons.
 
-## 1. Il problema: il prezzo saliva
+## 1. The problem: the fare kept rising
 
-«Dovevo comprare un biglietto del treno. Il prezzo della partenza che seguivo stava aumentando. Volevo spendere meno di 40 €, senza tornare sul sito tutto il giorno.»
+“I needed a train ticket. The fare for my chosen departure kept going up. I wanted to spend less than €40 without checking the site all day.”
 
-## 2. La scelta: guardare anche le partenze successive
+## 2. The choice: look at later departures too
 
-«Mi andavano bene anche altri treni, purché diretti e dopo le 12:30, nella stessa data e sulla stessa tratta. Ho costruito un sistema che li cercasse per me.»
+“Other trains would work, as long as they were direct and after 12:30, on the same day and route. I built a system to look for me.”
 
-## 3. Il risultato utile: un messaggio, non un’altra pagina
+## 3. The useful result: a message in my chat
 
-Mostra l’immagine Telegram, visibile prima della demo.
+Show the Telegram picture, visible before the demo.
 
-«Il sistema originale controllava circa ogni due ore. Se ritrovava lo stesso treno e prezzo in due letture, e il prezzo era sotto il budget, il bot mi avvisava su Telegram. Questa immagine usa un treno inventato a 34,90 €: mostra il tipo di risultato, non il biglietto che abbiamo comprato.»
+“The original system checked about every two hours. If two reads agreed on the same train and price, and the fare was below my budget, the bot told me on Telegram. This picture uses a made-up train at €34.90. It shows the kind of result, not the ticket we bought.”
 
-## 4. Mostra come funziona
+## 4. Show how it works
 
-1. Premi **Make a pretend bot**, poi **Press Start — pretend chat**.
-2. Premi **Start the pretend watch**, poi **Jump 2 hours & check**.
-3. Indica le due notifiche nella chat finta e apri **Open the notebook**.
-4. Fai un altro salto di due ore. La chat non riceve doppioni.
+1. Press **Make a pretend bot**, then **Press Start — pretend chat**.
+2. Press **Start the pretend watch**, then **Jump 2 hours & check**.
+3. Point to the two messages in the pretend chat and open **Open the notebook**.
+4. Jump two hours again. No repeat messages appear.
 
-«Il quaderno ricorda i treni già segnalati. Se i due prezzi sono diversi, o non sappiamo se un invio è riuscito, il sistema aspetta invece di dare una risposta poco sicura.»
+“The notebook remembers trains already sent. If two prices differ, or delivery is unclear, the system waits instead of giving a doubtful answer.”
 
-## 5. Il finale: comprare e fermare il monitor
+## 5. The ending: buy the ticket and stop
 
-Premi **I bought a ticket — stop**.
+Press **I bought a ticket — stop**.
 
-«Abbiamo trovato una partenza successiva adatta e comprato il biglietto sul sito. Poi abbiamo spento le notifiche. Il programma non comprava nulla al posto nostro.»
+“We found a suitable later departure and bought the ticket on the booking site. Then we stopped the alerts. The program did not buy anything for us.”
 
-## 6. Spiega cosa è reale e cosa è simulato
+## 6. Explain what is real and what is simulated
 
-«Il sistema originale privato aveva ricerca ferroviaria reale, timer, doppia verifica, memoria degli avvisi e Telegram. Questo repository pubblico mostra il percorso completo con dati e messaggi inventati. Le regole sono codice eseguibile, ma qui non si cercano prezzi reali e non si inviano notifiche al telefono.»
+“The original private system had a real railway reader, timer, double check, message memory and Telegram. This public repository shows the whole path with made-up data and messages. Its rules are runnable code, but it does not search live fares or send phone notifications.”
 
-Se qualcuno vuole vedere il codice, mostra `src/monitor.mjs` e lancia `npm test`: le 16 prove verificano prezzi, treni, doppioni, invii incerti, avvio, stop e file unico. [Qui sono spiegati i controlli](QA.md).
+If someone wants to see the code, show `src/monitor.mjs` and run `npm test`. The 16 tests check prices, trains, repeat messages, unclear delivery, setup, stop and the portable file. [Read about the checks](QA.md).
 
-## Prima di presentarlo
+## Before presenting
 
-Premi **Start over** per ripartire. Lascia visibili le etichette dei dati inventati. Mostra solo immagini pubbliche della demo. Non attribuire all’esempio un risparmio o un prezzo pagato: non sono pubblicati.
+Press **Start over**. Keep the made-up-data labels visible. Show only public demo images. Do not describe the example as a paid fare or claimed saving; those are not published.
 
-## Descrizione breve
+## Short description
 
-> Ho trasformato una ricerca manuale di biglietti in un monitor con avvisi Telegram: controlla i diretti dopo l’orario scelto, verifica due volte il prezzo e non ripete lo stesso messaggio. La demo pubblica racconta l’intero percorso con dati inventati.
+> I turned a repeated ticket search into a watcher with Telegram alerts. It checks direct trains after the chosen time, reads the price twice and avoids repeat messages. The public demo tells the whole story with made-up data.

@@ -1,47 +1,47 @@
-# Il problema, le scelte e il risultato
+# The problem, the choices and the outcome
 
-## 1. Non volevo controllare il prezzo tutto il giorno
+## 1. I did not want to check prices all day
 
-Dovevo comprare un biglietto per un viaggio in Germania. Seguivo un treno, ma vedevo il prezzo aumentare. Il mio obiettivo era semplice: trovare una partenza adatta sotto i 40 €, senza tornare continuamente sul sito.
+I needed a ticket for a trip in Germany. The price of the train I was watching kept rising. My goal was simple: find a suitable departure below €40 without going back to the booking site again and again.
 
-## 2. Ho allargato la ricerca, non il budget
+## 2. I widened the search, not the budget
 
-Anche uno dei treni successivi poteva andare bene. Ho quindi chiesto al sistema di cercare tutti i collegamenti diretti dopo le 12:30, per la stessa data e tratta. Così non dipendevo dal prezzo di un solo treno.
+A later train would work too. I asked the system to look for all direct departures after 12:30, on the same day and route. I no longer depended on the price of just one train.
 
-![Dal problema all’avviso e allo stop](../assets/problem-to-solution.svg)
+![From the problem to an alert and a stopped watcher](../assets/problem-to-solution.svg)
 
-## 3. Ho trasformato la ricerca in un controllo automatico
+## 3. I made the checks run automatically
 
-Il sistema originale usava GitHub Actions per partire circa ogni due ore. Non serviva tenere acceso il PC di casa. Cercava le partenze, controllava i filtri e verificava di avere letto il viaggio e il prezzo giusti.
+The original system used GitHub Actions to run about every two hours. My home computer could stay off. It searched the departures, checked the filters and made sure it had read the right journey and fare.
 
-Un orario programmato può partire in ritardo. Il monitor era un aiuto alla ricerca, non una garanzia di trovare ogni offerta.
+A scheduled run can start late. The watcher helped with the search; it did not promise to find every offer.
 
-## 4. Ho stabilito quando meritavo un messaggio
+## 4. I decided when a message was worth sending
 
-Un prezzo basso da solo non bastava. Doveva appartenere al treno giusto, comparire in due letture concordanti ed essere strettamente inferiore a 40 €. Una risposta mancante o poco chiara non diventava un prezzo inventato.
+A low price alone was not enough. It had to belong to the right train, appear in two matching reads and be strictly below €40. A missing or unclear answer never became an invented price.
 
-Il quaderno degli avvisi ricordava i treni già segnalati. Lo stesso treno non doveva farmi arrivare lo stesso messaggio a ogni controllo. Se non era chiaro se un invio fosse riuscito, il sistema non lo ripeteva alla cieca.
+The notebook remembered trains already sent. The same train should not produce the same message on every check. If delivery was unclear, the system did not blindly send again.
 
-## 5. Telegram chiudeva il percorso
+## 5. Telegram completed the path
 
-Il risultato utile arrivava nella chat del bot. Non dovevo consultare un altro cruscotto. Leggevo l’avviso, aprivo il sito e decidevo se comprare. Le chiavi del bot restavano nei GitHub Secrets, fuori dal codice.
+The useful result reached the bot's chat. I did not have to watch another dashboard. I read the alert, opened the booking site and decided whether to buy. The bot's keys stayed in GitHub Secrets, outside the code.
 
-L’immagine seguente è un esempio inventato, non una copia della chat privata e non il prezzo del nostro acquisto:
+This picture is a made-up example, not a copy of the private chat or the price we paid:
 
-<p align="center"><img src="../assets/telegram-example.svg" width="520" alt="Avviso Telegram illustrato: un treno diretto a 34,90 euro è sotto il budget di 40 euro. Dati inventati."></p>
+<p align="center"><img src="../assets/telegram-example.svg" width="520" alt="Illustrated Telegram alert: a direct train at €34.90 is below the €40 budget. Made-up data."></p>
 
-## 6. Abbiamo comprato un biglietto e spento il monitor
+## 6. We bought a ticket and stopped the watcher
 
-Abbiamo trovato una partenza successiva adatta e comprato il biglietto. Poi abbiamo fermato le notifiche. Il monitor non comprava biglietti e non prendeva decisioni al posto nostro.
+We found a suitable later departure and bought the ticket. Then we stopped the alerts. The watcher did not buy tickets or make decisions for us.
 
-Questo è il risultato che posso raccontare. Non pubblico un prezzo pagato, una cifra risparmiata o un tasso di successo non verificato.
+That is the outcome I can share. This project does not publish a paid fare, a saving or an unverified success rate.
 
-## 7. Ho preparato una versione pubblica da mostrare
+## 7. I made a public version to show the work
 
-La demo ripete la storia con dati inventati: crei il bot finto, premi Start, fai avanzare il timer, guardi i controlli, ricevi il messaggio simulato e fermi il monitor dopo l’acquisto immaginato.
+The demo tells the story with made-up data: create the pretend bot, press Start, move the clock, watch the checks, receive the simulated message and stop after the pretend purchase.
 
-Le regole del prezzo e dei doppioni sono codice eseguibile, usato anche nei test. La ricerca ferroviaria, il timer e Telegram sono simulati nella pagina. Il lettore ferroviario privato, i segreti e la cronologia non sono pubblicati. [Qui trovi il confronto completo](JOURNEY.md).
+The price and repeat-message rules are runnable code, also used by the tests. The railway search, timer and Telegram are simulated in the page. The private reader, secrets and history are not published. [See the full comparison](JOURNEY.md).
 
-Il codice ha 16 prove automatiche. Le verifiche includono soglia esatta, treno sbagliato, letture diverse, controlli contemporanei, invio incerto, avvio del bot, stop e file unico per la presentazione. [Il resoconto delle verifiche](QA.md) ne spiega i limiti.
+There are 16 automatic tests. They cover the exact budget boundary, wrong trains, different reads, checks running together, unclear delivery, bot setup, stopping and the portable presentation file. [The check record](QA.md) explains their limits.
 
-**Il valore del progetto è il percorso intero: partire da un bisogno, cercare senza lavoro manuale continuo e avvisare solo quando c’è qualcosa su cui agire.**
+**The value is the whole path: start with a need, remove repeated manual work and send a message only when there is something to act on.**
