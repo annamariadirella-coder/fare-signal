@@ -44,7 +44,7 @@ You need no account, keys or real Telegram bot. The demo has no visitor tracking
 
 ## How we checked it
 
-We ask the code 15 test questions. For example: does exactly €40 fail a “below €40” rule? Does a second check stay quiet? What if two checks run together?
+We ask the code 16 test questions. For example: does exactly €40 fail a “below €40” rule? Does a second check stay quiet? What if two checks run together?
 
 We also tried the buttons in a browser and on a narrow screen. The [check record](QA.md) says what passed and where the checks stop.
 

@@ -40,7 +40,7 @@ If your friend wants to see the code, open `src/monitor.mjs`. That file holds th
 npm test
 ```
 
-“The page and these 15 tests use the same rules. The tests ask questions about prices, wrong trains, repeat messages and unclear answers.”
+“The page and these 16 tests use the same rules. The tests ask questions about prices, wrong trains, repeat messages and unclear answers.”
 
 ## 6. Buy a ticket in the story and stop the watch
 

@@ -4,7 +4,7 @@ const text = file => readFile(new URL(file, root), 'utf8');
 let html = await text('index.html');
 const css = await text('demo/styles.css');
 const stripExports = code => code.replace(/^export /gm, '');
-const stripImports = code => code.replace(/^import .*;\n/gm, '');
+const stripImports = code => code.replace(/^import .*;\r?\n/gm, '');
 const engine = stripExports(await text('src/monitor.mjs'));
 const fixtures = stripExports(stripImports(await text('demo/fixtures.mjs'))).replace(/\bsettings\b/g, 'defaults');
 const app = stripImports(await text('demo/app.mjs'));

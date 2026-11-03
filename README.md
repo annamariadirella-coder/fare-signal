@@ -71,7 +71,7 @@ Run these from the project folder:
 | Type this | What it does |
 |---|---|
 | `npm start` | Opens a small local server so your browser can load the demo. |
-| `npm test` | Checks 15 examples to see whether the rules behave as expected. |
+| `npm test` | Checks 16 examples to see whether the rules behave as expected. |
 | `npm run check` | Checks code spelling, local page files and a few known secret patterns. |
 | `npm run build` | Puts the website files in a folder called `dist/`. |
 | `npm run standalone` | Makes one HTML file you can open without Node or a server. |
