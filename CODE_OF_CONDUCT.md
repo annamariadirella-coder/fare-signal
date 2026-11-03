@@ -1,7 +1,9 @@
-# Code of conduct
+# Be kind here
 
-Be respectful, constructive and specific. Assume good faith, welcome questions, and critique the work rather than the person.
+Treat people with care. Questions are welcome. Talk about how to improve the work, without being mean to the person who made it.
 
-Harassment, discrimination, threats, doxxing and sharing another person's private information are not acceptable. Maintainers may remove harmful content or restrict participation to protect contributors.
+Do not bully, threaten or treat someone badly because of who they are. Do not share another person's private information.
 
-Report concerns privately through the repository maintainer's available contact or private reporting channel. Do not repeat sensitive information in a public issue. Maintainers should handle reports fairly, protect privacy, and explain moderation decisions when doing so is appropriate.
+If something feels wrong, tell the project owner privately when a private contact or reporting option is available. Do not copy private details into a public issue.
+
+The people looking after the project may remove harmful posts or stop someone from taking part. They should listen fairly, protect privacy and explain decisions when it is appropriate to do so.

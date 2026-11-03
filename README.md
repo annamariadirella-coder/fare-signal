@@ -1,33 +1,44 @@
 <p align="center"><img src="assets/banner.svg" alt="Fare Signal — less noise. Better fares." width="100%"></p>
 
-<p align="center"><strong>Verify twice. Notify once.</strong><br>A small, interactive case study in building alerts people can trust.</p>
+<p align="center"><strong>Check twice. Tell me once.</strong><br>A little train-price game that shows when to send a message.</p>
 
-<p align="center"><a href="https://annamariadirella-coder.github.io/fare-signal/">Try the live demo</a> · <a href="#quick-start">Quick start</a> · <a href="docs/CASE_STUDY.md">Case study</a> · <a href="docs/ARCHITECTURE.md">Architecture</a> · <a href="docs/PRESENTING.md">Presentation guide</a></p>
+<p align="center"><a href="https://annamariadirella-coder.github.io/fare-signal/">Try it now</a> · <a href="#run-it-on-your-computer">Run it at home</a> · <a href="docs/CASE_STUDY.md">The story</a> · <a href="docs/ARCHITECTURE.md">How it works</a> · <a href="docs/PRESENTING.md">Show a friend</a></p>
 
-<p align="center"><a href="https://github.com/annamariadirella-coder/fare-signal/actions/workflows/ci.yml"><img alt="Verify the demo" src="https://github.com/annamariadirella-coder/fare-signal/actions/workflows/ci.yml/badge.svg"></a> · JavaScript · No runtime dependencies · MIT</p>
+<p align="center"><a href="https://github.com/annamariadirella-coder/fare-signal/actions/workflows/ci.yml"><img alt="See the automatic checks" src="https://github.com/annamariadirella-coder/fare-signal/actions/workflows/ci.yml/badge.svg"></a> · JavaScript · No extra packages · MIT</p>
 
----
+## What is this?
 
-A cheap fare is useful. An incorrect alert is noise. A repeated alert is an interruption.
+Imagine you want a train ticket for **less than €40**. You do not want to keep looking at the price all day.
 
-**Fare Signal** is a fictional rail-fare monitoring playground. Change the budget, introduce conflicting source data, simulate an outage, or run the same scan twice. Watch the verification decisions and a Telegram-style inbox respond.
+Fare Signal shows how a little helper could look for you. Before it tells you about a price, it asks:
 
-It grew from a real personal automation problem: monitoring train fares without checking the booking site all day. This repository is a **clean, standalone demonstration**, rebuilt with invented stations, services and observations. It contains no production credentials, private journey history or real messaging integration.
+1. Is this the right train?
+2. Did we see the same price twice?
+3. Is it below the amount you chose?
+4. Have we already told you about this train?
 
-![Fare Signal interactive playground](assets/demo-desktop.png)
+Think of the last step as a notebook. Once the helper has told you, it puts a tick beside that train. It does not tell you again.
 
-## The 30-second tour
+**This is a pretend example.** The stations, trains and prices are made up. The message box looks a bit like Telegram, but it sends nothing to Telegram. You cannot buy a ticket here. You need no account or secret key.
 
-1. Start with **A fare drops** and the default **€40** limit. Run verification.
-2. Two fictional offers qualify. Two simulated messages appear.
-3. Run it again. The same offers are verified, but **no duplicate messages** appear.
-4. Try **Prices disagree**, **Source unavailable**, or **Delivery uncertain**. A plausible price alone never triggers a trusted alert.
+![The train-price game](assets/demo-desktop.png)
 
-**All data is fictional.** No DB requests, no Telegram requests, no analytics, no API keys. The UI compresses a 20-second *fixture-clock* gap into a short animation. It does not pretend to perform a live check.
+## Try it in 30 seconds
 
-## Quick start
+Open the [demo](https://annamariadirella-coder.github.io/fare-signal/). Leave the limit at **€40**.
 
-Requires **Node.js 22 or newer**. No dependency installation is needed.
+1. Press **Check prices**. Two pretend messages appear.
+2. Press **Check again**. No new messages appear: the helper remembers.
+3. Choose **The prices do not match**. Check again. The helper waits because it is unsure.
+4. Press **Start over** to empty the notebook and play again.
+
+At a €40 limit, **€39.99 is low enough. €40.00 is not.** “Below” means less than, not equal to.
+
+## Run it on your computer
+
+The easiest way to play is the link above. To run your own copy, first install **Node.js 22 or newer**. Node is a tool that lets your computer run this project's JavaScript.
+
+Open a **terminal**: a window where you type instructions for your computer. If you have Git, a tool for copying and saving code, type these lines one at a time:
 
 ```sh
 git clone https://github.com/annamariadirella-coder/fare-signal.git
@@ -35,69 +46,69 @@ cd fare-signal
 npm start
 ```
 
-Open **http://127.0.0.1:8765**. Start from the repository root. If the port is busy, set `PORT` to another port in your shell.
+Then open **http://127.0.0.1:8765** in your browser. This address points to your own computer. Keep the terminal open while you play. Press **Ctrl+C** there when you want to stop.
 
-**No Git?** Use **Code → Download ZIP**, extract the folder, open a terminal there and run `npm start`. No `npm install`, account or API key is required.
+**No Git?** On this GitHub page, choose **Code → Download ZIP**. Unzip the folder. Open a terminal inside the folder that contains `package.json`, then type `npm start`.
 
-**Presenting without Node?** Generate the single-file demo with `npm run standalone` on a machine with Node, then open the resulting HTML file in any modern browser. All data and logic are embedded.
+You do not need `npm install`. There are no extra packages to fetch. If port 8765 is busy, stop the other copy, or set `PORT` to another number in your terminal.
 
-```sh
-npm test     # meaningful behavior tests using the built-in Node test runner
-npm run check
-npm run build
-```
+## Handy commands
 
-The static build is written to `dist/`. Serve it over HTTP; opening `index.html` directly as a file will not reliably load ES modules. [Publishing instructions](docs/PUBLISHING.md) cover GitHub and GitHub Pages.
+Run these from the project folder:
 
-Prefer a single file for a presentation? Run `npm run standalone`. The generated `fare-signal-demo.html` embeds the engine, fixtures, styles and browser controller and can be opened directly, without a server. Its documentation links stay within the demo; the full guides are in this repository. This generated file is ignored by Git.
-
-## What makes it interesting
-
-| Decision | Why it exists |
+| Type this | What it does |
 |---|---|
-| Check the whole journey identity | Equal prices for different trains are not confirmation. |
-| Store money as integer cents | A threshold should not depend on floating-point rounding. |
-| Require matching observations | Conflicting or incomplete data must not become a confident alert. |
-| Use a strict threshold | At the default limit, €39.99 qualifies; €40.00 does not. |
-| Reserve delivery before awaiting it | Concurrent checks must not both send the same alert. |
-| Hold ambiguous deliveries | A timeout may happen after a message was received. Blind retries create noise. |
-| Share the engine between demo and tests | The visible behavior is powered by the same code the suite exercises. |
+| `npm start` | Opens a small local server so your browser can load the demo. |
+| `npm test` | Checks 13 examples to see whether the rules behave as expected. |
+| `npm run check` | Checks code spelling, local page files and a few known secret patterns. |
+| `npm run build` | Puts the website files in a folder called `dist/`. |
+| `npm run standalone` | Makes one HTML file you can open without Node or a server. |
 
-## Explore the scenarios
+The one-file version is called `fare-signal-demo.html`. Make it on a computer with Node, then copy it to a computer with a modern browser. It has the pictures, rules and pretend data inside. Its guide links point to the explanation on the page.
 
-| Scenario | What to try | Expected result |
-|---|---|---|
-| A fare drops | Run at €40, then run again | Two deliveries; the next scan blocks two duplicates. |
-| Prices disagree | Run any scan | Mismatched observations are held. No messages. |
-| Source unavailable | Run any scan | Missing observations are held. No invented prices. |
-| Delivery uncertain | Run twice | One attempt per qualifying journey; subsequent attempts stay blocked for review. |
-| Custom budget | Set the limit to €35 | €34.90 and €29.90 qualify. Raising the limit does not forget the delivery ledger. |
+For the normal version, use `npm start`. Double-clicking `index.html` may stop the browser from loading its separate code files.
 
-Changing scenarios or choosing **Reset sandbox** clears the simulated ledger. Adjusting the budget retains it. Reloading the page clears all state; nothing is persisted.
+## Four things to try
 
-## Repository map
+| Choose this | What happens |
+|---|---|
+| A cheaper ticket | Two prices are below €40. Two pretend messages appear. |
+| The prices do not match | The two checks give different answers. No message. |
+| No price comes back | A missing answer is not a free ticket. No message. |
+| Did the message arrive? | The pretend sender gives no clear answer. The helper pauses instead of sending twice. |
 
-```text
-src/monitor.mjs         Verification rules and transport-independent delivery ledger
-demo/fixtures.mjs       Invented journeys and deterministic observation pairs
-demo/app.mjs            Browser controller and simulated inbox
-demo/styles.css         Responsive, dependency-free interface
-tests/monitor.test.mjs   Thresholds, identity, errors, concurrency and deduplication
-scripts/                Local preview, static build and public-data checks
-docs/                   Case study, architecture, presentation and publishing guides
-.github/workflows/      CI and an explicitly manual GitHub Pages deployment
-```
+Moving the price slider keeps the notebook. Choosing a new example, pressing **Start over**, or reloading the page empties it. The page saves nothing after you leave.
 
-## Design boundaries
+## Where things live
 
-This is a **demo and reusable verification core**, not a production booking service. Its delivery ledger is in memory. A real deployment would require a persistent, atomic ledger, live-source freshness rules, a scheduler, source-specific validation, secure credentials and operational monitoring. Read the [architecture and tradeoffs](docs/ARCHITECTURE.md) before adapting it.
+A **repository**, or **repo**, is just a project folder saved on GitHub.
 
-The Telegram-style messages are visual simulations. This project is not affiliated with any railway operator or Telegram. It makes no claims about real ticket prices or availability. The repository's public-data check is a guardrail, not a replacement for a human review before publication.
+| Folder or file | Think of it as… |
+|---|---|
+| `src/monitor.mjs` | The helper's rules and notebook. |
+| `demo/fixtures.mjs` | The made-up trains and prices. |
+| `demo/app.mjs` | The part that connects buttons to the rules. |
+| `demo/styles.css` | The page's clothes: colors, sizes and layout. |
+| `tests/monitor.test.mjs` | Little questions that check the rules. |
+| `scripts/` | Tools to start, check and pack the project. |
+| `docs/` | More explanations, in small steps. |
+| `.github/workflows/` | Instructions GitHub follows to check or publish the project. |
 
-## Contributing
+## Read more
 
-Small, well-scoped improvements are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), and the [code of conduct](CODE_OF_CONDUCT.md).
+- [The story](docs/CASE_STUDY.md): why this little helper exists.
+- [How it works](docs/ARCHITECTURE.md): the rules, with examples and exact details.
+- [Show a friend](docs/PRESENTING.md): a short demo you can follow.
+- [Put your copy online](docs/PUBLISHING.md): the publishing steps.
+- [What we checked](docs/QA.md): what passed and what we have not proved.
+- [Help improve it](CONTRIBUTING.md), [keep secrets safe](SECURITY.md), and [be kind](CODE_OF_CONDUCT.md).
 
-**MIT licensed.** A useful everyday problem, carefully explored and openly documented.
+## What this little example cannot do
 
-See the [verification record](docs/QA.md) for checks actually performed. The CI badge above links to the actual remote results. GitHub Pages deployment is explicitly manual.
+It does not look up real fares or send real messages. Its notebook lives only in this open page. A real helper needs a notebook that survives restarts, real price checks, a clock, a timer and a safe way to send messages. [How it works](docs/ARCHITECTURE.md) explains these parts.
+
+The automatic secret check looks for only a few patterns. A person still needs to review files before sharing them. Browser checks are not a promise that every browser or accessibility tool will work perfectly.
+
+This project is not connected to a railway company or Telegram.
+
+**You may use and change the code under the [MIT license](LICENSE).** The license has the exact legal terms.

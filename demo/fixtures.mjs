@@ -10,10 +10,10 @@ export const journeys = [
 ].map(journey => ({ ...journey, from: settings.from, to: settings.to, date: settings.date }));
 
 export const scenarios = {
-  drop: { title: 'A fare drops', note: 'Two matching reads. Only confirmed offers below your chosen limit become alerts.', prices: [4790, 3490, 4000, 2990] },
-  mismatch: { title: 'Prices disagree', note: 'The second source observation changes. An attractive price is not enough.', prices: [4790, 3490, 4000, 2990] },
-  outage: { title: 'Source unavailable', note: 'A missing response is never converted into a bargain.', prices: [4790, 3490, 4000, 2990] },
-  uncertain: { title: 'Delivery uncertain', note: 'A simulated timeout reserves delivery. Retry the scan: the engine will not send again.', prices: [4790, 3490, 4000, 2990] },
+  drop: { title: 'A cheaper ticket', note: 'The same price appears twice. If it is below your limit, the helper shows a pretend message.', prices: [4790, 3490, 4000, 2990] },
+  mismatch: { title: 'The prices do not match', note: 'The first check and the second check show different prices. The helper waits.', prices: [4790, 3490, 4000, 2990] },
+  outage: { title: 'No price comes back', note: 'No answer comes back. That does not mean the ticket is free. The helper waits.', prices: [4790, 3490, 4000, 2990] },
+  uncertain: { title: 'Did the message arrive?', note: 'The pretend sender gives no clear answer. Check again: the helper waits instead of sending twice.', prices: [4790, 3490, 4000, 2990] },
 };
 
 export function observations(scenario, sequence = 0) {

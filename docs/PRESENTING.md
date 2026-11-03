@@ -1,47 +1,55 @@
-# Present Fare Signal in three minutes
+# Show Fare Signal to a friend
 
-## 0:00 — Start with the problem
+You can show the project in about three minutes. Open the [demo](https://annamariadirella-coder.github.io/fare-signal/) first.
 
-“This began as an everyday problem: I wanted to know when a train fare fell below my budget without checking a booking website all day. The public demo uses invented journeys and prices so anyone can explore the logic without accessing the private system.”
+## 1. Tell the little story
 
-## 0:25 — Make the product do something
+“I wanted a cheaper train ticket without checking a website all day. This is a pretend example of a helper that checks for me. All these trains and prices are made up.”
 
-Open the playground. Leave **A fare drops** and **€40** selected. Run verification.
+## 2. Show a useful message
 
-“The same journey and fare must agree across two observations. The animation represents a virtual 20-second gap; it isn't a live price check.”
+Choose **A cheaper ticket**, keep **€40**, and press **Check prices**.
 
-Point out the two local inbox messages. Run the verification again.
+“The helper sees the same price twice. It checks that this is the right train. Two tickets cost less than €40, so two pretend messages appear. Nothing goes to Telegram.”
 
-“The second scan does not send the same messages again. The engine remembers the journey, not just the current price.”
+The two reads are 20 pretend seconds apart. The short animation is not a real live check.
 
-## 1:15 — Show the edge cases
+## 3. Show its memory
 
-Switch to **Prices disagree** and run once. Then switch to **Delivery uncertain**, run twice.
+Press **Check again**.
 
-“A changing price is held back. An uncertain delivery stays pending because a timeout can happen after a message is received. The system doesn't blindly retry.”
+“No new messages! The helper has a little notebook. It remembers which trains it already told us about.”
 
-## 2:00 — Explain the engineering choice
+## 4. Show what happens when it is unsure
 
-Show `src/monitor.mjs` and run `npm test`.
+Choose **The prices do not match**, then check.
 
-“The browser and tests use the same small engine. Money is integer cents; eligibility, identity, observation timing and delivery are explicit rules. The demo has no runtime dependencies.”
+“The two answers are different. The helper waits instead of calling it a bargain.”
 
-## 2:35 — Name the boundary honestly
+Choose **Did the message arrive?**, then check twice.
 
-“This is a clean demonstration, not a public live-fare service. A real multi-user deployment needs persistent atomic storage, source adapters, real-clock freshness and operational monitoring. Those tradeoffs are documented.”
+“The pretend sender did not give a clear answer. The helper does not send again, because the first message might have arrived.”
 
-## 3:00 — Close with the takeaway
+## 5. Show the checks
 
-“The useful part isn't the notification. It's deciding when the evidence is good enough to deserve someone's attention.”
+If your friend wants to see the code, open `src/monitor.mjs`. That file holds the rules. In the project folder, run:
 
-## Before recording a walkthrough
+```sh
+npm test
+```
 
-- Reset the sandbox and restore the €40 limit.
-- Keep the simulated-data label visible.
-- Use the demo's fictional route, not private tickets or messages.
-- Record one successful scan, one repeated scan and one failure scenario.
-- Never claim stars, users, money saved or production guarantees you cannot substantiate.
+“The page and these 13 tests use the same rules. The tests ask questions about prices, wrong trains, repeat messages and unclear answers.”
 
-## Short repository description
+## 6. Say what is still pretend
 
-> A fictional rail-fare monitoring playground. Shared verification engine, independent observations, journey-level deduplication and a simulated Telegram-style inbox. Built with plain JavaScript and no runtime dependencies.
+“This page does not look up real prices or send real messages. Its notebook disappears when I reload. A real helper needs real price readers, a saved notebook, a timer and a safe message sender.”
+
+Finish with: “A useful helper knows when to tell you something, and when to stay quiet.”
+
+## Before you show it
+
+Press **Start over**. Keep the “pretend” label visible. Show only the made-up data. Say what you actually built and checked. Use the [check record](QA.md) if someone asks for details.
+
+## A short description to copy
+
+> A little train-price playground. It checks a price twice and remembers which trains it already told you about. All data and messages are pretend. Built with JavaScript, with no extra packages to install.

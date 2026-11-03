@@ -1,10 +1,12 @@
-## What changed and why
+## What did you change?
 
-## Verification
+## Why does it help?
 
-- [ ] Relevant behavior tests pass
-- [ ] Public-data check and static build pass
-- [ ] UI changes checked on desktop and mobile, if applicable
-- [ ] No real credentials or personal data added
+## What did you check?
 
-## Limitations or tradeoffs
+- [ ] The tests for the changed rules pass
+- [ ] `npm run check` and `npm run build` pass
+- [ ] If the page changed, I tried it on a wide and a narrow screen
+- [ ] I added no real keys or private information
+
+## Anything we should know or check next?

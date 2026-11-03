@@ -1,13 +1,19 @@
-# Changelog
+# What changed
 
-## 1.0.0 — 2026-11-03
+## Easier words — 2026-11-03
 
-- Initial clean, fictional demonstration.
-- Shared verification engine with strict monetary and journey rules.
-- Journey-level delivery reservation, duplicate suppression and uncertain-delivery handling.
-- Responsive interactive playground with four scenarios and a simulated inbox.
-- Behavior tests, static build, standalone HTML generator and public-data guardrail.
-- Case study, architecture, publishing and presentation guides.
-- CI definition and manually triggered GitHub Pages workflow.
+- Rewrote the guides with short sentences and everyday examples.
+- Explained words like “repository” and “ledger” when they are needed.
+- Made the demo's buttons and explanations easier to read.
+- Kept the same train-price and repeat-message rules.
 
-Prepared as a publishable package. This entry does not imply a public release has been made.
+## First version: 1.0.0 — 2026-11-03
+
+- Added made-up trains and prices, with four examples to try.
+- Added a helper that checks prices twice and remembers past messages.
+- Added a pretend inbox that sends no real messages.
+- Made the page fit wide and narrow screens.
+- Added 13 tests, file checks and tools to pack the website or make one HTML file.
+- Added guides, an MIT license and GitHub recipes to check and publish the project.
+
+The public repo and demo are online. These notes do not mean a versioned release or package has been published.

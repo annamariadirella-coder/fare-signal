@@ -1,52 +1,76 @@
-# Architecture and tradeoffs
+# How the little helper works
 
-## One engine, two consumers
+Imagine a helper with a notebook. It checks a train price twice. If everything looks right, it puts a message in a pretend inbox. Then it writes “told you” in its notebook.
+
+## Follow one ticket
 
 ```mermaid
 flowchart LR
-  F[Fictional fixture source] --> A[Browser controller]
-  A --> E[Shared verification engine]
-  T[Node behavior tests] --> E
-  E --> L[In-memory journey ledger]
-  L --> M[Injected simulated transport]
-  M --> I[Local inbox preview]
+  A[Made-up train prices] --> B[Buttons on the page]
+  B --> C[Check the rules]
+  T[Automatic test questions] --> C
+  C --> D[Look in the notebook]
+  D --> E[Pretend to send]
+  E --> F[Show the message]
 ```
 
-`evaluate()` is a pure function. It accepts a journey, two observations and settings. It has no browser, clock, storage or network dependency. It validates eligibility and observation structure, then returns an explicit decision.
+The page and the tests use the **same rules**. This helps us check the code people actually use in the demo.
 
-`Monitor.check()` handles delivery. A qualifying decision first consults the ledger, reserves an unseen identity, awaits an injected transport and records the receipt. A missing receipt or thrown error leaves the reservation pending.
+## First: is it the right train?
 
-```mermaid
-stateDiagram-v2
-  [*] --> Unseen
-  Unseen --> Pending: qualifying pair / reserve before await
-  Pending --> Delivered: valid transport receipt
-  Pending --> Pending: error or uncertain receipt / hold for review
-  Delivered --> Delivered: later checks / block duplicate
-```
+Two tickets can both cost €30 and still belong to different trains. The helper checks the train's name, stations, date, leaving time, arrival time and whether you need to change trains.
 
-## Contracts
+In the code, `fingerprint()` makes a label from those details. The label includes `id`, `train`, `from`, `to`, `date`, `departure`, `arrival` and `direct`. Both price checks must have the same label as the chosen train.
 
-Money is represented by positive safe integer `priceCents`. Thresholds are strict: price must be **less than** `thresholdCents`. Currency must be `EUR`.
+Only direct trains on the chosen route and day, leaving **after** the chosen time, can pass. A train at exactly 12:30 does not pass a rule saying “after 12:30.”
 
-A journey fingerprint contains `id`, `train`, `from`, `to`, `date`, `departure`, `arrival` and `direct`. Both observations must contain the same fingerprint. Dates in this demo are fixture strings, not a real operating calendar.
+## Next: do the prices match?
 
-Observations use numeric millisecond timestamps. The pair must be at least 20 seconds and at most five minutes apart. This checks the pair's relative age, not freshness against the current time. The fixture controller advances a virtual clock; no claim of live observation is made.
+The two checks must show the same price in euros. A missing price is not zero. If one check says €30 and the other says €35, the helper waits.
 
-The demo transport returns `{ id: 'simulated-N' }`. It never sends network traffic. Production transports must validate their real provider's receipt, and the application must decide how to reconcile ambiguous outcomes.
+The code counts **cents**: €34.90 becomes `3490`. Whole cents make it easier to compare money without tiny rounding errors. `priceCents` must be a positive, safe whole number. The price must be less than `thresholdCents`, the chosen limit in cents. The currency must be `EUR`.
 
-## Concurrency and durability
+The checks must be 20 seconds to 5 minutes apart, including both ends. Their `at` values count milliseconds. In this game, the clock is pretend, so the page can show 20 seconds passing in a short animation. The dates are made-up example dates.
 
-The synchronous reservation prevents two sends for one journey **within one engine instance in one JavaScript process**. It does not provide distributed locking or exactly-once delivery. The ledger clears on page reload, scenario change or manual reset.
+This checks the gap **between** the two reads. It does not check whether either read is fresh compared with the real clock. Two made-up reads also do not prove that two real websites agree.
 
-A production ledger should reserve via a unique key or atomic transaction. Persist pending and delivered states, audit reconciliation actions, and document how an operator confirms delivery before retrying. Provider-side idempotency is preferable where available.
+`evaluate()` does this rule checking. It receives the train, two reads and settings, then returns an answer. It does not send messages or use the browser, network, clock or notebook itself.
 
-## Browser behavior
+## Last: have we already told you?
 
-The controller disables controls while a scan animates. A scenario change resets the sandbox; changing the threshold preserves the ledger. Each scan uses deterministic fixture data and the same engine used by the Node tests.
+`Monitor.check()` uses the answer and looks in the notebook, called a **ledger** in the code.
 
-There is no local storage, cookie, service worker, tracking pixel, external font, live API or third-party script. The HTML, CSS, modules and local assets are loaded normally by the browser.
+| Notebook entry | What the helper does |
+|---|---|
+| Nothing yet | Writes “waiting,” then tries to send. |
+| Waiting | Pauses. Someone must check what happened. |
+| Told you | Keeps quiet. No second message for this train. |
 
-## Test boundaries
+It writes “waiting” **before** starting the send. Think of putting your name on a toy before walking away: a second check can see the mark and will not start another send.
 
-The automated suite checks decision rules and delivery behavior. It does not prove live-source correctness, railway availability, distributed delivery guarantees or assistive-technology compatibility. Manual browser QA covers the primary desktop and mobile interactions; full accessibility certification is outside this repository's claim.
+The pretend sender returns a receipt such as `{ id: 'simulated-1' }`. Then the entry becomes “told you.” An error or missing receipt leaves it at “waiting.” A real message might have arrived even when the sender did not get an answer, so trying again at once could send it twice.
+
+The notebook remembers the **train journey**, not its price. Even if that train gets cheaper later, it does not send another message.
+
+## Where the notebook stops helping
+
+This protection works inside **one copy of the engine in one JavaScript process**. Separate running copies do not share the notebook. It is not a promise that a real message will arrive exactly once.
+
+Reloading the page, choosing another example or pressing **Start over** empties the notebook. Moving the budget slider keeps it. Buttons pause while a check is running.
+
+A real service needs a saved notebook shared by all its running copies. Writing “waiting” must happen as one indivisible step, often called an **atomic transaction** or a **unique key**. It also needs a clear way for a person to check uncertain sends before retrying them. If the message company supports a key that blocks repeat sends, use that too.
+
+## What the browser loads
+
+It loads this project's page, styles, JavaScript and pictures. There are no outside fonts, tracking scripts or live price calls. It uses no cookies, local storage or service worker. The pretend sender makes no network calls.
+
+## What a real helper would still need
+
+- Real price readers, with checks that the data is correct and new enough.
+- A real clock and a timer to run checks.
+- Rules for time zones, departed trains and how often a source may be asked.
+- A shared notebook that survives restarts.
+- A real sender, safely stored keys and checked receipts.
+- A way to notice problems and fix uncertain sends.
+
+The tests check our small set of rules. They do not prove that real fares are right, that tickets are available, or that every accessibility tool works. See [what we checked](QA.md).

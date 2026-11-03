@@ -1,60 +1,49 @@
-# From checking fares to trusting alerts
+# The story behind Fare Signal
 
-## The everyday problem
+## A small everyday problem
 
-The original need was practical: find a train ticket below a budget without repeatedly opening a booking website. A private monitor was built, its scope was expanded to later direct departures, and the user eventually bought a suitable ticket. That live monitor was then switched off.
+I wanted to find a train ticket below my budget. Looking at a booking website again and again took time.
 
-Fare Signal is the public learning artifact from that work. It is rebuilt with fictional data rather than exposing the private deployment. There is no claimed saving, attributed booking price, user metric or production success rate in this repository.
+A private helper watched prices. Later, it also watched later direct trains. We bought a suitable ticket and switched the helper off.
 
-## The product question
+This public project tells that story with **made-up trains, stations and prices**. It does not share the private helper or its messages. It does not claim a particular saving or ticket price.
 
-The naive rule is “if price is low, send a message.” The useful question is “what evidence is enough to interrupt someone?”
+## A cheap price is only the start
 
-A notification creates a small promise: the price belongs to the right journey, it was actually observed, and the user has not already been interrupted about the same thing. The product is therefore as much about *not sending* as it is about sending.
+Imagine a friend says, “I found a €30 ticket!” You would want to know: “Is it my train? Is that still the price? Did you already tell me?”
 
-## Three decisions
+Those are the questions this demo asks before showing a message.
 
-### 1. Confirm identity before value
+## Three simple choices
 
-The verification fingerprint includes route, date, train, departure, arrival and directness. Two equal amounts from different services fail confirmation. The fixture observations must be in euros, positive integer cents, ordered and at least 20 seconds apart, with no more than five minutes between them.
+### Check the train first
 
-That gap is not proof that two real sources are independent. A real adapter must establish independent collection. The demo uses two explicitly fictional observations to make the rule inspectable.
+The date, stations, train and times must match. A cheap ticket for the wrong train does not help.
 
-### 2. Treat uncertainty explicitly
+### Wait when unsure
 
-An absent response is not zero euros. A changing price is not a confirmed bargain. A transport timeout is not necessarily a failed delivery.
+If one check says €30 and the next says €35, the helper waits. If no answer comes back, it does not invent a price.
 
-The engine has distinct outcomes for missing data, disagreement, an above-budget price, a ready offer, successful delivery, an existing delivery and an uncertain delivery. The UI shows those differences instead of hiding them behind a generic success or error toast.
+Sending can be uncertain too. Imagine posting a letter, then losing the receipt. The letter might still arrive. Sending another straight away could give your friend two letters. The helper keeps that send marked “waiting” until it can be checked.
 
-### 3. Remember the interruption
+### Remember what was said
 
-The delivery identity belongs to the journey, not the scan or the price. A later scan, or even a lower price for the same journey, does not generate another message. Different journeys can generate separate messages.
+The helper puts a tick beside a train after sending its message. Checking again does not send it again. A lower price for the same train does not erase the tick. Another train can get its own message.
 
-The engine reserves the identity synchronously before calling its asynchronous transport. Two simultaneous checks within one JavaScript process therefore cannot both start a send. After an uncertain response, the reservation remains pending. Production would need persistent storage and atomic operations across processes.
+The notebook is only held in memory here. A real helper would need to save it. [How it works](ARCHITECTURE.md) gives the exact rules.
 
-## Why the interface looks like this
+## Why the page looks this way
 
-The page leads with a concise promise and then lets the visitor operate the system. The controls, journey decisions and inbox are visible together. A short verification rail makes the causal chain legible.
+The controls, trains and message box sit together so you can see what your click did. Words explain each result; color is not the only clue. On a small screen, the parts stack one below another. The page follows the browser's reduced-motion setting.
 
-Warm paper, a restrained orange signal and a quiet green inbox connect the visual language to the subject without copying railway branding. All critical feedback is text, not color alone. The layout reflows to a single column on small screens. Animations respect reduced-motion preferences.
+## What we left out
 
-## What was deliberately left out
+You need no account, keys or real Telegram bot. The demo has no visitor tracking. Plain JavaScript is enough for this little example, so there are no extra code packages to install.
 
-- Real scraping and booking APIs: they would require credentials, policies, maintenance and a much broader reliability claim.
-- A real Telegram bot: the learning goal is visible decision behavior, not sending visitors messages.
-- Accounts, analytics and cloud storage: no visitor identity is needed to understand the product.
-- A heavyweight frontend framework: the shared engine and a small browser controller are sufficient for this scope.
+## How we checked it
 
-## Evidence rather than hype
+We ask the code 13 test questions. For example: does exactly €40 fail a “below €40” rule? Does a second check stay quiet? What if two checks run together?
 
-The tests target failure modes: strict monetary boundaries, wrong journey identity, currency, invalid values, conflicting observations, concurrent execution and ambiguous delivery. The browser walkthrough verifies the product interactions and mobile layout. Nothing in this repository claims a particular number of users, stars, revenue, latency or money saved.
+We also tried the buttons in a browser and on a narrow screen. The [check record](QA.md) says what passed and where the checks stop.
 
-## What a production version would need next
-
-1. Source adapters that collect genuine, independently verified observations.
-2. A persistent, atomic delivery ledger and a documented recovery procedure.
-3. Freshness checks against the real clock and departure cutoff rules.
-4. Scheduling, time-zone handling, rate limits and operational metrics.
-5. A transport adapter with secure credential management and receipt validation.
-
-The core lesson: **automation is more useful when its confidence, memory and failure behavior are designed together.**
+The lesson is simple: **a helpful message should be right, and it should not keep repeating itself.**

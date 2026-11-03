@@ -15,24 +15,24 @@ export function evaluate(journey, first, second, settings) {
   }
   const outside = journey.direct !== true || journey.from !== settings.from || journey.to !== settings.to
     || journey.date !== settings.date || minutes(journey.departure) <= minutes(settings.after);
-  if (outside) return { status: 'excluded', reason: 'Outside the selected journey rules.' };
+  if (outside) return { status: 'excluded', reason: 'This train does not match the trip you chose.' };
   const valid = read => read && read.identity === fingerprint(journey)
     && Number.isSafeInteger(read.priceCents) && read.priceCents > 0
     && read.currency === 'EUR' && Number.isFinite(read.at);
   if (!valid(first) || !valid(second)) {
-    return { status: 'unavailable', reason: 'A valid, matching source observation is missing.' };
+    return { status: 'unavailable', reason: 'We need two usable prices for this same train.' };
   }
   if (second.at - first.at < MIN_READ_GAP_MS) {
-    return { status: 'unavailable', reason: 'Independent reads must be at least 20 seconds apart.' };
+    return { status: 'unavailable', reason: 'The two checks need a gap of at least 20 seconds.' };
   }
   if (second.at - first.at > 300_000) {
-    return { status: 'unavailable', reason: 'The observation pair is too far apart to confirm.' };
+    return { status: 'unavailable', reason: 'The two checks are more than five minutes apart.' };
   }
   if (first.priceCents !== second.priceCents) {
-    return { status: 'mismatch', reason: 'The two independent prices disagree.' };
+    return { status: 'mismatch', reason: 'The two checks show different prices.' };
   }
   if (second.priceCents >= settings.thresholdCents) {
-    return { status: 'above', reason: 'Verified price is at or above the strict threshold.', priceCents: second.priceCents };
+    return { status: 'above', reason: 'The checked price is not below your limit.', priceCents: second.priceCents };
   }
   return { status: 'ready', reason: 'Same journey. Same price. Below your limit.', priceCents: second.priceCents };
 }
@@ -50,17 +50,17 @@ export class Monitor {
     if (result.status !== 'ready') return result;
     const key = fingerprint(journey);
     const existing = this.ledger.get(key);
-    if (existing?.status === 'delivered') return { ...result, status: 'duplicate', reason: 'Already delivered for this journey. No repeat.' };
-    if (existing?.status === 'pending') return { ...result, status: 'uncertain', reason: 'Delivery needs review. Automatic retry blocked.' };
+    if (existing?.status === 'delivered') return { ...result, status: 'duplicate', reason: 'Already told you about this train. No second message.' };
+    if (existing?.status === 'pending') return { ...result, status: 'uncertain', reason: 'We do not know if the message arrived. Check before sending again.' };
     // Reserve synchronously, before awaiting transport, to prevent concurrent sends.
     this.ledger.set(key, { status: 'pending' });
     try {
       const receipt = await this.transport({ journey: { ...journey }, priceCents: result.priceCents });
       if (!receipt || typeof receipt.id !== 'string' || receipt.id.length === 0) throw new Error('Missing receipt');
       this.ledger.set(key, { status: 'delivered', id: receipt.id });
-      return { ...result, status: 'delivered', reason: 'Simulated alert delivered.', receipt: receipt.id };
+      return { ...result, status: 'delivered', reason: 'Pretend message shown.', receipt: receipt.id };
     } catch {
-      return { ...result, status: 'uncertain', reason: 'Delivery needs review. Automatic retry blocked.' };
+      return { ...result, status: 'uncertain', reason: 'We do not know if the message arrived. Check before sending again.' };
     }
   }
 
