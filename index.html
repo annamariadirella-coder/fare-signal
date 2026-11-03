@@ -4,9 +4,9 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Fare Signal: how a train-price watcher solved a real search problem with Telegram alerts. Explore the story with simulated data.">
   <meta name="theme-color" content="#f5f3ed">
-  <meta property="og:title" content="Fare Signal — less noise. Better fares.">
+  <meta property="og:title" content="Fare Signal:  less noise. Better fares.">
   <meta property="og:description" content="A little helper checks prices twice and tells you once. All trains and prices are pretend.">
-  <title>Fare Signal — less noise. Better fares.</title>
+  <title>Fare Signal:  less noise. Better fares.</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="demo/styles.css">
   <script type="module" src="demo/app.mjs"></script>
@@ -39,22 +39,22 @@
       <div class="outcome-copy"><p class="eyebrow">THE PROBLEM → THE SOLUTION → THE OUTCOME</p><h2 id="story-title">I wanted the search<br><em>to come to me.</em></h2>
       <p>The fare for the train I was watching kept rising. I wanted a ticket <strong>below €40</strong>, without checking the booking site all day.</p>
       <p>I widened the search to <strong>direct trains after 12:30</strong>. The original system checked about every two hours, read each price twice and told me on Telegram. Its notebook stopped repeat messages.</p>
-      <p><strong>We bought a ticket for a later train. Then we switched the watcher off.</strong> We made the purchase ourselves, on the booking site.</p>
+      <p><strong>I bought a ticket for a later train. Then I switched the watcher off.</strong> I made the purchase myself, on the booking site.</p>
       <div class="outcome-rule"><strong>Example: a budget below €40.</strong><span>€47.90 → no message.</span><span>€34.90, checked twice → a Telegram alert.</span><span>Same train already sent → no repeat message.</span></div>
-      <p class="outcome-boundary">This picture uses made-up data, not the fare we paid. The demo below simulates the whole path and sends no real messages.</p><a class="text-link" href="docs/CASE_STUDY.md">Read how I built it ↗</a></div>
+      <p class="outcome-boundary">This picture uses made-up data, not the fare I paid. The demo below simulates the whole path and sends no real messages.</p><a class="text-link" href="docs/CASE_STUDY.md">Read how I built it ↗</a></div>
       <figure class="telegram-example"><img src="assets/telegram-example.svg" width="640" height="800" alt="Example Telegram alert: direct train NF 208 at 15:38 costs €34.90, below the €40 budget. Price checked twice. No real message sent."><figcaption>The result I wanted: know when a suitable train is below my budget. The pictured journey and fare are made up.</figcaption></figure>
     </section>
 
     <section class="playground wrap" id="playground" aria-labelledby="demo-title">
       <div class="section-heading"><div><span class="section-index">01 /</span><h2 id="demo-title">Try the little helper</h2></div><span class="demo-label"><span class="dot"></span> PRETEND TRAINS · NO REAL MESSAGES</span></div>
 
-      <div class="story-intro"><p><strong>A real project, retold with pretend data.</strong> The original helper checked real train prices and sent Telegram alerts. We bought a ticket and stopped it. Here, you can play through every step without a bot, a key or a phone.</p><a class="text-link" href="docs/JOURNEY.md">Read the whole story ↗</a></div>
+      <div class="story-intro"><p><strong>A real project, retold with pretend data.</strong> The original helper checked real train prices and sent Telegram alerts. I bought a ticket and stopped it. Here, you can play through every step without a bot, a key or a phone.</p><a class="text-link" href="docs/JOURNEY.md">Read the whole story ↗</a></div>
       <div class="setup-grid" aria-label="Pretend bot setup">
-        <article><span class="panel-kicker">1 / MAKE A BOT</span><h3>A little messenger</h3><p>In the real project, BotFather made our Telegram bot. Here, one click makes a pretend one. No key needed.</p><button id="make-bot" class="story-button">Make a pretend bot</button></article>
-        <article><span class="panel-kicker">2 / SAY HELLO</span><h3>Press Start in its chat</h3><p>A real bot needs you to say hello first. This button acts out that step. It does not open Telegram.</p><button id="start-bot" class="story-button" disabled>Press Start — pretend chat</button><p id="bot-state" role="status">No pretend bot yet. Make one first.</p></article>
+        <article><span class="panel-kicker">1 / MAKE A BOT</span><h3>A little messenger</h3><p>In the real project, BotFather made my Telegram bot. Here, one click makes a pretend one. No key needed.</p><button id="make-bot" class="story-button">Make a pretend bot</button></article>
+        <article><span class="panel-kicker">2 / SAY HELLO</span><h3>Press Start in its chat</h3><p>A real bot needs you to say hello first. This button acts out that step. It does not open Telegram.</p><button id="start-bot" class="story-button" disabled>Press Start (pretend chat)</button><p id="bot-state" role="status">No pretend bot yet. Make one first.</p></article>
         <article><span class="panel-kicker">3 / TURN THE WATCH ON</span><h3>Let the helper look</h3><p>The original timer ran on GitHub, about every two hours. Here, you move a pretend clock with a button.</p><button id="start-watch" class="story-button" disabled>Start the pretend watch</button><p id="watch-state" role="status">The watch is off.</p></article>
       </div>
-      <div class="clock-bar"><div><span class="panel-kicker">PRETEND CLOCK</span><strong id="clock">Day 1 · 08:00</strong></div><p>One click on “Jump 2 hours &amp; check” acts out the next wake-up. No real timer runs in this page.</p><button id="stop-watch" class="story-button" disabled>I bought a ticket — stop</button></div>
+      <div class="clock-bar"><div><span class="panel-kicker">PRETEND CLOCK</span><strong id="clock">Day 1 · 08:00</strong></div><p>One click on “Jump 2 hours &amp; check” acts out the next wake-up. No real timer runs in this page.</p><button id="stop-watch" class="story-button" disabled>I bought a ticket: stop</button></div>
       <p id="stop-note" class="stop-note" hidden>All done. The pretend watch is off. Its messages stay here so you can read them. Press Start over to play again.</p>
       <ol class="whole-trail" aria-label="The whole path"><li id="trail-1">Timer wakes up</li><li id="trail-2">Find trains</li><li id="trail-3">Check twice</li><li id="trail-4">Check notebook</li><li id="trail-5">Send to Telegram</li><li id="trail-6">Save the receipt</li></ol>
       <p id="trail-note" class="trail-note" role="status">Make a pretend bot, press Start, then turn the watch on.</p>
@@ -83,12 +83,21 @@
             <div class="results-footnote"><span>● &nbsp;All trains, prices and check times are made up.</span><span> +1 means the train arrives the next day.</span></div>
           </div>
 
-          <aside class="inbox-panel" aria-labelledby="inbox-title"><div class="inbox-heading"><span class="inbox-icon" aria-hidden="true">↗</span><div><p class="panel-kicker">THE MESSAGE BOX</p><h3 id="inbox-title">Your pretend Telegram chat</h3></div><span id="inbox-badge">0</span></div><p class="inbox-description">A pretend Telegram message box.<br>No messages actually leave this page.</p><p id="chat-setup" class="chat-setup">First, make the pretend bot.</p><div id="inbox" class="inbox"><div class="empty-inbox"><div class="empty-icon" aria-hidden="true">✉</div><strong>Nothing to interrupt you.</strong><p>Jump two hours. A message appears<br>only when the price passes the rules.</p></div></div><div class="inbox-bottom"><span class="dot"></span> Checked twice. Told once.</div></aside>
+          <aside class="inbox-panel" aria-labelledby="inbox-title">
+            <div class="telegram-header"><span class="tg-back" aria-hidden="true">‹</span><span class="tg-avatar" aria-hidden="true">➤</span><div><h3 id="inbox-title">Fare Signal</h3><p>bot · simulated chat</p></div><span id="inbox-badge">0</span><span class="tg-menu" aria-hidden="true">⋮</span></div>
+            <p class="inbox-description">Telegram-style preview. No real messages are sent.</p>
+            <div class="tg-date">14 March · demo</div>
+            <p id="chat-setup" class="chat-setup">First, make the pretend bot.</p>
+            <p id="chat-hello" class="chat-hello" hidden><strong>Fare Signal</strong><br>Hello! I will show a message here when a made-up fare is below your budget.<small>08:00 · simulated reply</small></p>
+            <div id="inbox" class="inbox" aria-label="Simulated Telegram messages"><div class="empty-inbox"><strong>No price alerts yet.</strong><p>Start the pretend watch, then jump two hours.</p></div></div>
+            <div class="tg-composer" aria-hidden="true"><span>⌕</span><span>Message (simulation only)</span><span>➤</span></div>
+            <div class="inbox-bottom">SIMULATION ONLY · No account or bot key needed.</div>
+          </aside>
         </div>
         <div class="app-bottom"><span><span class="dot"></span> DEMO MODE</span><span id="run-summary" role="status" aria-live="polite" aria-atomic="true">Choose an example and jump two hours.</span><span>NO REAL PRICE CHECKS</span></div>
       </div>
 
-      <details class="evidence-box"><summary>Open the notebook: what did each check see?</summary><p>Read A and Read B are made-up prices for the same train, 20 pretend seconds apart. A receipt means our pretend sender answered. It does not mean a person read the message.</p><div class="evidence-scroll"><table><thead><tr><th>Train</th><th>Read A</th><th>Read B</th><th>What the helper decided</th><th>Notebook</th></tr></thead><tbody id="evidence"></tbody></table></div><p>Run a check to fill this notebook. It stays only while this page is open.</p></details>
+      <details class="evidence-box"><summary>Open the notebook: what did each check see?</summary><p>Read A and Read B are made-up prices for the same train, 20 pretend seconds apart. A receipt means my pretend sender answered. It does not mean a person read the message.</p><div class="evidence-scroll"><table><thead><tr><th>Train</th><th>Read A</th><th>Read B</th><th>What the helper decided</th><th>Notebook</th></tr></thead><tbody id="evidence"></tbody></table></div><p>Run a check to fill this notebook. It stays only while this page is open.</p></details>
       <div class="demo-caption"><span>Tip: jump two hours again. The notebook stops repeated messages.</span><span>See what happens when things go wrong.</span></div>
     </section>
 

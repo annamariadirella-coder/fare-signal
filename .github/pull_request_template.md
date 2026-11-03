@@ -9,4 +9,4 @@
 - [ ] If the page changed, I tried it on a wide and a narrow screen
 - [ ] I added no real keys or private information
 
-## Anything we should know or check next?
+## Anything I should know or check next?

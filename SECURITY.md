@@ -8,7 +8,7 @@ A **secret key** is like a key to your front door. Keep it out of public files, 
 
 Use the repo's **private vulnerability reporting** feature if it is available. That lets you tell the owner about a problem privately. If it is not available, ask the owner how to contact them privately. In that first public request, leave out secrets and details someone could use to cause harm.
 
-## What our checks do
+## What my checks do
 
 `npm run check` looks for a few known shapes of secret keys and private-project details. It cannot catch everything. A person must still look through files before publishing them.
 

@@ -8,7 +8,7 @@ So I changed the question: **“What if a later train costs less than €40?”*
 
 I built a system to look for me. It checked prices about every two hours. When it found a suitable train below my budget, it checked again and sent me a Telegram message.
 
-**We bought a ticket for a later train, then switched the alerts off.** The system did not buy anything. It helped me know when to look. The paid fare is private; this project does not claim a saving we cannot show.
+**I bought a ticket for a later train, then switched the alerts off.** The system did not buy anything. It helped me know when to look. The paid fare is private; this project does not claim a saving I cannot show.
 
 **[Try the demo →](https://annamariadirella-coder.github.io/fare-signal/)** · [Read the full story](docs/CASE_STUDY.md) · [Run a copy on your computer](#run-the-demo-on-your-computer)
 
@@ -18,7 +18,7 @@ I built a system to look for me. It checked prices about every two hours. When i
 
 The goal was not another page to keep checking. **I wanted the message to reach me** when there was something worth looking at.
 
-This picture is an example. Its train and price are the same made-up data used in the demo. They are not the ticket we bought.
+This picture is an example. Its train and price are the same made-up data used in the demo. They are not the ticket I bought.
 
 <p align="center"><img src="assets/telegram-example.svg" width="540" alt="Example Telegram alert: direct train NF 208 costs €34.90, below the €40 budget. Departure 15:38. Price checked twice. Made-up data; no real message sent."></p>
 
@@ -42,7 +42,7 @@ In the real system, the bot sent the useful result to my Telegram chat and point
 3. **Check twice.** Before sending an alert, the system had to find the same train and price again. If it was unsure, it did not make up an answer.
 4. **Remember past messages.** A small “notebook” kept track of trains already sent. Seeing the same train again did not send another alert.
 5. **Connect Telegram.** The bot sent the result to my chat. Its secret key lived in GitHub Secrets, outside the code.
-6. **Buy the ticket and stop.** Buying was my decision. After buying, we no longer needed the checks.
+6. **Buy the ticket and stop.** Buying was my decision. After buying, I no longer needed the checks.
 
 ## When does it send a message?
 
@@ -64,12 +64,12 @@ Checking twice helps catch mistakes. It does not hold the fare: the booking site
 Open the [online demo](https://annamariadirella-coder.github.io/fare-signal/). You need no account or installation. The Telegram example is visible before the interactive setup.
 
 1. **Make a pretend bot**: act out creating the bot.
-2. **Press Start — pretend chat**: say hello with a pretend `/start`.
+2. **Press Start (pretend chat)**: say hello with a pretend `/start`.
 3. **Start the pretend watch**: turn the watcher on.
 4. **Jump 2 hours & check**: move the pretend clock and run a check. At the €40 limit, two simulated messages appear.
 5. **Open the notebook**: see both price reads, the decision and what the watcher remembers.
 6. Jump two hours again: no new messages for the same trains.
-7. **I bought a ticket — stop**: stop the pretend watch. This buys nothing.
+7. **I bought a ticket: stop**: stop the pretend watch. This buys nothing.
 8. **Start over**: clear everything and return to bot setup.
 
 Move the budget slider or choose a difficult example: different prices, no answer or unclear delivery. Changing the example clears the notebook; moving only the budget keeps it. Reloading the page clears everything. Nothing keeps running in the background.
@@ -83,13 +83,13 @@ Move the budget slider or choose a difficult example: different prices, no answe
 | Two-hour checks | GitHub Actions, now off | A button moves a pretend clock |
 | Double check and message memory | Used by the watcher | Runnable code shared by the demo and tests |
 | Telegram | Real bot and alerts, now stopped | Simulated bot setup, Start, chat and receipts |
-| Purchase | Made by us on the booking site | No purchase |
+| Purchase | Made by me on the booking site | No purchase |
 
 You can install **the complete demo** from this repository. It is not a public live-fare service. The original project's story is shared without keys, private chats, tickets or the private monitor's history.
 
 ## Run the demo on your computer
 
-You need **Node.js 22 or newer**, a tool that runs JavaScript. If you have Git, open a terminal—the window where you type commands—and enter these lines one at a time:
+You need **Node.js 22 or newer**, a tool that runs JavaScript. If you have Git, open a terminal (the window where you type commands) and enter these lines one at a time:
 
 ```sh
 git clone https://github.com/annamariadirella-coder/fare-signal.git
@@ -135,7 +135,7 @@ The tests ask useful questions: is this the right train? Is the price below the 
 
 - [The full story: problem, choices and outcome](docs/CASE_STUDY.md).
 - [The journey from search to message](docs/JOURNEY.md).
-- [How the code works](docs/ARCHITECTURE.md) and [what we checked](docs/QA.md).
+- [How the code works](docs/ARCHITECTURE.md) and [what I checked](docs/QA.md).
 - [How to present it](docs/PRESENTING.md) and [publish a copy](docs/PUBLISHING.md).
 - [How to help](CONTRIBUTING.md), [keep secrets safe](SECURITY.md) and [take part kindly](CODE_OF_CONDUCT.md).
 

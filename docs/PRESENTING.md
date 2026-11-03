@@ -14,11 +14,11 @@ Open the [story and Telegram example](https://annamariadirella-coder.github.io/f
 
 Show the Telegram picture, visible before the demo.
 
-“The original system checked about every two hours. If two reads agreed on the same train and price, and the fare was below my budget, the bot told me on Telegram. This picture uses a made-up train at €34.90. It shows the kind of result, not the ticket we bought.”
+“The original system checked about every two hours. If two reads agreed on the same train and price, and the fare was below my budget, the bot told me on Telegram. This picture uses a made-up train at €34.90. It shows the kind of result, not the ticket I bought.”
 
 ## 4. Show how it works
 
-1. Press **Make a pretend bot**, then **Press Start — pretend chat**.
+1. Press **Make a pretend bot**, then **Press Start (pretend chat)**.
 2. Press **Start the pretend watch**, then **Jump 2 hours & check**.
 3. Point to the two messages in the pretend chat and open **Open the notebook**.
 4. Jump two hours again. No repeat messages appear.
@@ -27,9 +27,9 @@ Show the Telegram picture, visible before the demo.
 
 ## 5. The ending: buy the ticket and stop
 
-Press **I bought a ticket — stop**.
+Press **I bought a ticket: stop**.
 
-“We found a suitable later departure and bought the ticket on the booking site. Then we stopped the alerts. The program did not buy anything for us.”
+“I found a suitable later departure and bought the ticket on the booking site. Then I stopped the alerts. The program did not buy anything for me.”
 
 ## 6. Explain what is real and what is simulated
 

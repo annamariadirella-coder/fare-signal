@@ -26,13 +26,13 @@ The notebook remembered trains already sent. The same train should not produce t
 
 The useful result reached the bot's chat. I did not have to watch another dashboard. I read the alert, opened the booking site and decided whether to buy. The bot's keys stayed in GitHub Secrets, outside the code.
 
-This picture is a made-up example, not a copy of the private chat or the price we paid:
+This picture is a made-up example, not a copy of the private chat or the price I paid:
 
 <p align="center"><img src="../assets/telegram-example.svg" width="520" alt="Illustrated Telegram alert: a direct train at €34.90 is below the €40 budget. Made-up data."></p>
 
-## 6. We bought a ticket and stopped the watcher
+## 6. I bought a ticket and stopped the watcher
 
-We found a suitable later departure and bought the ticket. Then we stopped the alerts. The watcher did not buy tickets or make decisions for us.
+I found a suitable later departure and bought the ticket. Then I stopped the alerts. The watcher did not buy tickets or make decisions for me.
 
 That is the outcome I can share. This project does not publish a paid fare, a saving or an unverified success rate.
 

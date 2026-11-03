@@ -1,4 +1,4 @@
-# What we checked
+# What I checked
 
 ## Illustrated story update
 
@@ -8,12 +8,12 @@ Prepared and checked on **3 November 2026**. Published as [Fare Signal](https://
 
 ## Questions the computer checked
 
-- On our computer, we used Node.js 24.19.0.
+- On my computer, I used Node.js 24.19.0.
 - All 16 test questions passed using `node --test`.
 - The code spelling checks passed. The page could find its local files.
 - The check found none of the secret or private-project patterns it looks for. It only knows a few patterns, so a person still needs to review the files.
 - The website files were packed into `dist/` successfully.
-- We also made one HTML file with the same rules, pretend data and page inside.
+- I also made one HTML file with the same rules, pretend data and page inside.
 
 GitHub [CI workflow](https://github.com/annamariadirella-coder/fare-signal/actions) passed all 13 tests, source checks and static build on both Node 22 and Node 24. The [Pages deployment](https://github.com/annamariadirella-coder/fare-signal/actions) also succeeded. The linked workflow shows the public verification results.
 
@@ -21,11 +21,11 @@ GitHub [CI workflow](https://github.com/annamariadirella-coder/fare-signal/actio
 
 The local suite now has 16 passing tests. Two new questions check the bot → Start → watch order and that buying a ticket stops all future pretend wake-ups.
 
-In the browser, we checked bot setup, the 08:00 → 10:00 clock jump, two first messages, a second jump with two repeats stopped, the notebook's two reads, and the stop button disabling further checks. We also checked the setup on a narrow screen and saw no sideways page overflow. Different-price reads produced no messages and four held decisions.
+In the browser, I checked bot setup, the 08:00 → 10:00 clock jump, two first messages, a second jump with two repeats stopped, the notebook's two reads, and the stop button disabling further checks. I also checked the setup on a narrow screen and saw no sideways page overflow. Different-price reads produced no messages and four held decisions.
 
-## Things we tried in the first version
+## Things I tried in the first version
 
-We opened the first version in a browser and tried these steps. The table uses the new, simpler button names; the rules are the same:
+I opened the first version in a browser and tried these steps. The table uses the new, simpler button names; the rules are the same:
 
 | Interaction | Observed result |
 |---|---|
@@ -44,10 +44,10 @@ We opened the first version in a browser and tried these steps. The table uses t
 
 Pictures from the first version (button names were later made simpler): [desktop](../assets/demo-desktop.png), [mobile](../assets/demo-mobile.png).
 
-## What these checks cannot tell us
+## What these checks cannot tell me
 
-We did not connect to or test a real railway website or Telegram. These checks do not prove that every accessibility tool works, that real prices are correct, or that separate running copies can safely share a message notebook. Read [how it works](ARCHITECTURE.md) before building a real service.
+I did not connect to or test a real railway website or Telegram. These checks do not prove that every accessibility tool works, that real prices are correct, or that separate running copies can safely share a message notebook. Read [how it works](ARCHITECTURE.md) before building a real service.
 
-A test is a question we ask the code. A green result means it answered that question as expected. It does not prove the whole program can never go wrong. The GitHub links above show the exact runs we checked before this wording update.
+A test is a question I ask the code. A green result means it answered that question as expected. It does not prove the whole program can never go wrong. The GitHub links above show the exact runs I checked before this wording update.
 
 The one-file generator now has a parser check too. It handles both Windows and Unix line endings so leftover imports cannot break the single HTML file.

@@ -1,24 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="640" height="800" viewBox="0 0 640 800" role="img" aria-labelledby="title desc"><title id="title">When a train falls below the budget</title><desc id="desc">Illustrated Telegram chat. Budget below EUR 40. Made-up direct train NF 208 costs EUR 34.90 and leaves at 15:38. Price checked twice. No real message sent.</desc><style>text{font-family:Arial,Helvetica,sans-serif}.muted{fill:#64736a}.ink{fill:#25352e}.green{fill:#226644}</style><rect width="640" height="800" rx="24" fill="#f2f4ee"/>
-<text x="32" y="43" font-size="16" letter-spacing="1.5" fill="#68776a">ILLUSTRATED EXAMPLE · MADE-UP DATA</text>
-<rect x="30" y="68" width="580" height="670" rx="24" fill="#e5ede1" stroke="#c4d0bf"/>
-<path d="M54 68H586Q610 68 610 92V163H30V92Q30 68 54 68" fill="#253c32"/>
-<circle cx="76" cy="115" r="23" fill="#b4d6be"/>
-<path d="M65 119L89 103L80 128L75 119L65 119Z" fill="#253c32"/>
-<text x="115" y="109" font-size="24" font-weight="700" fill="#fff">Fare Signal</text>
-<text x="115" y="137" font-size="17" fill="#c8decc">bot · simulated Telegram chat</text>
-<rect x="201" y="185" width="380" height="56" rx="14" fill="#cde5c4"/>
-<text x="224" y="220" font-size="20" fill="#29482c">Tell me when it is below €40.</text>
-<rect x="55" y="264" width="526" height="388" rx="16" fill="#fffef9"/>
-<text x="78" y="299" font-size="17" fill="#236646" font-weight="700">FARE SIGNAL · EXAMPLE ALERT</text>
-<text x="78" y="347" font-size="27" font-weight="700" fill="#25352e">A train is below your budget!</text>
-<text x="78" y="416" font-size="62" font-weight="700" fill="#226644">€34.90</text>
-<text x="78" y="454" font-size="22" fill="#25352e">Your limit: less than €40.00</text>
-<text x="78" y="496" font-size="22" fill="#25352e">NF 208 · direct · 15:38 → 18:16</text>
-<text x="78" y="528" font-size="21" fill="#25352e">Northport Central → Linden Hbf</text>
-<text x="78" y="560" font-size="21" fill="#25352e">14 March 2027 · 1 adult · 2nd class</text>
-<path d="M78 580H554" stroke="#dbe2d5"/>
-<text x="78" y="610" font-size="20" fill="#226644">✓ Same train and price, checked twice.</text>
-<text x="78" y="638" font-size="18" fill="#64736a">Check the booking site before buying.</text>
-<text x="58" y="689" font-size="18" fill="#4b654a">You choose whether to buy. Fares may change.</text>
-<text x="58" y="720" font-size="17" fill="#64736a">No real message was sent.</text>
-<text x="32" y="774" font-size="17" fill="#64736a">Example fare and journey, not the ticket we bought.</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="850" viewBox="0 0 640 850" role="img" aria-labelledby="title desc"><title id="title">A Telegram-style fare alert</title><desc id="desc">Simulated chat. I ask for a ticket below 40 euros. Fare Signal replies with a made-up direct train at 34.90 euros after two matching price checks. No real message is sent.</desc><style>text{font-family:Arial,Helvetica,sans-serif}</style>
+<rect width="640" height="850" rx="24" fill="#f2f4f5"/><text x="32" y="40" font-size="16" letter-spacing="1.2" fill="#647b8b">TELEGRAM-STYLE PREVIEW · MADE-UP DATA</text>
+<rect x="30" y="64" width="580" height="724" rx="24" fill="#dae6ee" stroke="#b8ccd9"/>
+<path d="M54 64H586Q610 64 610 88V160H30V88Q30 64 54 64" fill="#517da2"/>
+<path d="M60 102L48 113L60 124" fill="none" stroke="white" stroke-width="3"/>
+<circle cx="101" cy="112" r="27" fill="#79b9df"/><path d="M85 112L118 98L109 128L101 117L85 112Z" fill="white"/>
+<text x="145" y="107" font-size="25" font-weight="700" fill="white">Fare Signal</text><text x="145" y="136" font-size="17" fill="#dceaf5">bot · simulated chat</text><text x="571" y="122" font-size="32" fill="white">⋮</text>
+<rect x="248" y="176" width="144" height="29" rx="14" fill="#8fa8b8"/><text x="267" y="196" font-size="15" fill="white">14 March · demo</text>
+<path d="M201 222H580V293H215Q201 293 201 279Z" fill="#d9f5c5"/><text x="220" y="250" font-size="20" fill="#294b33">Tell me when it is below €40.</text><text x="491" y="279" font-size="14" fill="#61925e">08:00 ✓</text>
+<path d="M57 315H568Q582 315 582 329V671Q582 685 568 685H45L57 674Z" fill="white"/>
+<text x="78" y="348" font-size="19" font-weight="700" fill="#2682b9">Fare Signal</text><text x="449" y="348" font-size="13" fill="#7a94a5">DEMO ALERT</text>
+<text x="78" y="391" font-size="26" font-weight="700" fill="#25352e">A train is below your budget!</text><text x="78" y="454" font-size="60" font-weight="700" fill="#25352e">€34.90</text>
+<text x="78" y="493" font-size="21" fill="#536f81">Your limit: less than €40.00</text><text x="78" y="535" font-size="22" fill="#25352e">NF 208 · direct · 15:38 → 18:16</text><text x="78" y="567" font-size="21" fill="#25352e">Northport Central → Linden Hbf</text><text x="78" y="599" font-size="20" fill="#25352e">14 March 2027 · 1 adult · 2nd class</text>
+<text x="78" y="637" font-size="20" fill="#536f81">Same train and price checked twice.</text><text x="78" y="666" font-size="18" fill="#2682b9">Check the booking site before buying.</text>
+<rect x="51" y="708" width="538" height="54" rx="27" fill="white"/><text x="75" y="741" font-size="18" fill="#899da9">Message (simulation only)</text><path d="M543 724L568 735L543 746L549 735Z" fill="#4296ca"/>
+<text x="32" y="818" font-size="17" fill="#647b8b">Made-up trip and price. No real Telegram message is sent.</text>
+</svg>

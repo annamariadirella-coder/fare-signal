@@ -20,7 +20,7 @@ flowchart LR
   E --> F[Show the message]
 ```
 
-The page and the tests use the **same rules**. This helps us check the code people actually use in the demo.
+The page and the tests use the **same rules**. This helps me check the code people actually use in the demo.
 
 ## First: is it the right train?
 
@@ -42,7 +42,7 @@ This checks the gap **between** the two reads. It does not check whether either 
 
 `evaluate()` does this rule checking. It receives the train, two reads and settings, then returns an answer. It does not send messages or use the browser, network, clock or notebook itself.
 
-## Last: have we already told you?
+## Last: have I already told you?
 
 `Monitor.check()` uses the answer and looks in the notebook, called a **ledger** in the code.
 
@@ -79,4 +79,4 @@ It loads this project's page, styles, JavaScript and pictures. There are no outs
 - A real sender, safely stored keys and checked receipts.
 - A way to notice problems and fix uncertain sends.
 
-The tests check our small set of rules. They do not prove that real fares are right, that tickets are available, or that every accessibility tool works. See [what we checked](QA.md).
+The tests check my small set of rules. They do not prove that real fares are right, that tickets are available, or that every accessibility tool works. See [what I checked](QA.md).

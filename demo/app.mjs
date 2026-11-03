@@ -22,11 +22,13 @@ function renderStory() {
     : story.bot === 'created' ? 'Pretend bot made. Now press Start in its chat.'
     : 'Pretend chat connected. The bot knows where to put its messages.';
   $('watch-state').textContent = story.watch === 'running' ? 'Pretend watch is on. Each click below jumps two hours.'
-    : story.watch === 'stopped' ? 'Ticket bought in our story. Watch stopped. No more checks or messages.'
+    : story.watch === 'stopped' ? 'Ticket bought in my story. Watch stopped. No more checks or messages.'
     : 'The watch is off. Connect the pretend bot, then start the watch.';
   $('chat-setup').textContent = story.bot === 'missing' ? 'First, make the pretend bot.'
     : story.bot === 'created' ? 'Your pretend bot is ready. Press Start above.'
-    : 'You: /start → Fare Signal: Hello! I can put pretend price messages here.';
+    : '/start';
+  $('chat-setup').classList.toggle('outgoing', story.bot === 'started');
+  $('chat-hello').hidden = story.bot !== 'started';
   $('run-label').textContent = story.watch === 'stopped' ? 'Watch stopped' : 'Jump 2 hours & check';
   $('stop-note').hidden = story.watch !== 'stopped';
 }
@@ -54,7 +56,7 @@ const statusLabels = { delivered: '✓ Message shown', duplicate: '↳ Already t
 const monitor = new Monitor(async alert => {
   if ($('scenario').value === 'uncertain') throw new Error('Deliberately simulated transport timeout');
   const receipt = { id: `simulated-${messages.length + 1}` };
-  messages.push({ ...alert, receipt: receipt.id });
+  messages.push({ ...alert, receipt: receipt.id, time: story.clock.split('·')[1].trim(), budgetCents: settings.thresholdCents });
   return receipt;
 });
 
@@ -74,7 +76,7 @@ function renderJourneys(results = []) {
     const unavailable = result && ['unavailable', 'mismatch'].includes(result.status);
     return `<article class="journey" aria-label="${journey.train}, ${journey.departure} to ${journey.arrival}${nextDay ? ', next day' : ''}">
       <div><div class="journey-train"><span class="train-badge">${journey.train}</span><span class="duration">Direct service</span></div><div class="journey-time">${journey.departure}<span>→</span>${journey.arrival}${nextDay ? '<sup>+1</sup>' : ''}</div></div>
-      <div>${sparkline(index)}</div><div class="fare"><strong>${unavailable ? '—' : euros(price)}</strong><br><small class="${result ? `result-badge state-${result.status}` : ''}" title="${result?.reason ?? 'A made-up price. Jump two hours to check it.'}">${result ? statusLabels[result.status] : 'Pretend price · not checked yet'}</small></div></article>`;
+      <div>${sparkline(index)}</div><div class="fare"><strong>${unavailable ? 'n/a' : euros(price)}</strong><br><small class="${result ? `result-badge state-${result.status}` : ''}" title="${result?.reason ?? 'A made-up price. Jump two hours to check it.'}">${result ? statusLabels[result.status] : 'Pretend price · not checked yet'}</small></div></article>`;
   }).join('');
   $('lowest').textContent = euros(Math.min(...fixture.prices));
   $('limit').textContent = `< ${euros(settings.thresholdCents)}`;
@@ -88,7 +90,7 @@ function renderInbox() {
     $('inbox').innerHTML = '<div class="empty-inbox"><div class="empty-icon" aria-hidden="true">✉</div><strong>Nothing to interrupt you.</strong><p>Jump two hours.<br>Only prices that pass get a pretend message.</p></div>';
     return;
   }
-  $('inbox').innerHTML = messages.map(({ journey, priceCents }, index) => `<article class="message"><div class="message-title">Fare Signal <span>PRETEND MESSAGE</span></div><h4>${euros(priceCents)}</h4><p><strong>${journey.train} · ${journey.departure} → ${journey.arrival}${journey.arrival < journey.departure ? ' +1' : ''}</strong><br>Northport Central → Linden Hbf<br>Sun, 14 Mar · direct · second class</p><p class="message-meta">The same price appeared in two pretend<br>checks, 20 pretend seconds apart.</p><footer>pretend receipt ${String(index + 1).padStart(2, '0')} &nbsp;✓✓</footer></article>`).reverse().join('');
+  $('inbox').innerHTML = messages.map(({ journey, priceCents, time, budgetCents }, index) => `<article class="message"><div class="message-title">Fare Signal <span>DEMO ALERT</span></div><p class="tg-alert-title">A train is below your budget!</p><h4>${euros(priceCents)}</h4><p><strong>${journey.train} · ${journey.departure} → ${journey.arrival}${journey.arrival < journey.departure ? ' +1' : ''}</strong><br>Northport Central → Linden Hbf<br>Sun, 14 Mar · direct · second class</p><p class="message-budget">Your limit: below ${euros(budgetCents)}</p><p class="message-meta">The same price appeared in two pretend<br>checks, 20 pretend seconds apart.</p><footer>${time} · simulated receipt ${String(index + 1).padStart(2, '0')} &nbsp;✓</footer></article>`).join('');
 }
 
 function stage(number) {
@@ -139,7 +141,7 @@ async function run() {
   stage(2);
   trail(3, 'Look at the same trains again. The two reads must agree, 20 pretend seconds apart.');
   $('verification-title').textContent = 'Looking at the second price';
-  $('verification-detail').textContent = '20 seconds pass on our pretend clock. This little animation is shorter.';
+  $('verification-detail').textContent = '20 seconds pass on my pretend clock. This little animation is shorter.';
   await wait(700);
   stage(3);
   $('verification-title').textContent = 'Checking the rules and notebook';
@@ -191,6 +193,6 @@ $('start-watch').addEventListener('click', () => {
 });
 $('stop-watch').addEventListener('click', () => {
   story.stop(); renderStory();
-  $('trail-note').textContent = 'Ticket bought in our story. The pretend watch is off. It will not wake up or send again.';
-  $('run-summary').textContent = 'Ticket bought in our story. The pretend watch is stopped. Start over to replay.';
+  $('trail-note').textContent = 'Ticket bought in my story. The pretend watch is off. It will not wake up or send again.';
+  $('run-summary').textContent = 'Ticket bought in my story. The pretend watch is stopped. Start over to replay.';
 });

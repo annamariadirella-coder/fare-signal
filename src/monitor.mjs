@@ -20,7 +20,7 @@ export function evaluate(journey, first, second, settings) {
     && Number.isSafeInteger(read.priceCents) && read.priceCents > 0
     && read.currency === 'EUR' && Number.isFinite(read.at);
   if (!valid(first) || !valid(second)) {
-    return { status: 'unavailable', reason: 'We need two usable prices for this same train.' };
+    return { status: 'unavailable', reason: 'Two usable prices are needed for this train.' };
   }
   if (second.at - first.at < MIN_READ_GAP_MS) {
     return { status: 'unavailable', reason: 'The two checks need a gap of at least 20 seconds.' };
@@ -51,7 +51,7 @@ export class Monitor {
     const key = fingerprint(journey);
     const existing = this.ledger.get(key);
     if (existing?.status === 'delivered') return { ...result, status: 'duplicate', reason: 'Already told you about this train. No second message.' };
-    if (existing?.status === 'pending') return { ...result, status: 'uncertain', reason: 'We do not know if the message arrived. Check before sending again.' };
+    if (existing?.status === 'pending') return { ...result, status: 'uncertain', reason: 'The message receipt is unclear. Check before sending again.' };
     // Reserve synchronously, before awaiting transport, to prevent concurrent sends.
     this.ledger.set(key, { status: 'pending' });
     try {
@@ -60,7 +60,7 @@ export class Monitor {
       this.ledger.set(key, { status: 'delivered', id: receipt.id });
       return { ...result, status: 'delivered', reason: 'Pretend message shown.', receipt: receipt.id };
     } catch {
-      return { ...result, status: 'uncertain', reason: 'We do not know if the message arrived. Check before sending again.' };
+      return { ...result, status: 'uncertain', reason: 'The message receipt is unclear. Check before sending again.' };
     }
   }
 
