@@ -2,7 +2,7 @@
 
 <p align="center"><strong>Verify twice. Notify once.</strong><br>A small, interactive case study in building alerts people can trust.</p>
 
-<p align="center"><a href="#quick-start">Quick start</a> · <a href="docs/CASE_STUDY.md">Case study</a> · <a href="docs/ARCHITECTURE.md">Architecture</a> · <a href="docs/PRESENTING.md">Presentation guide</a></p>
+<p align="center"><a href="https://annamariadirella-coder.github.io/fare-signal/">Try the live demo</a> · <a href="#quick-start">Quick start</a> · <a href="docs/CASE_STUDY.md">Case study</a> · <a href="docs/ARCHITECTURE.md">Architecture</a> · <a href="docs/PRESENTING.md">Presentation guide</a></p>
 
 <p align="center"><a href="https://github.com/annamariadirella-coder/fare-signal/actions/workflows/ci.yml"><img alt="Verify the demo" src="https://github.com/annamariadirella-coder/fare-signal/actions/workflows/ci.yml/badge.svg"></a> · JavaScript · No runtime dependencies · MIT</p>
 
@@ -98,6 +98,6 @@ The Telegram-style messages are visual simulations. This project is not affiliat
 
 Small, well-scoped improvements are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), and the [code of conduct](CODE_OF_CONDUCT.md).
 
-**MIT licensed.** No fake stars, testimonials or performance claims. Just a useful little problem, carefully explored.
+**MIT licensed.** A useful everyday problem, carefully explored and openly documented.
 
 See the [verification record](docs/QA.md) for checks actually performed. The CI badge above links to the actual remote results. GitHub Pages deployment is explicitly manual.

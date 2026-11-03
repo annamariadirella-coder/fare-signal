@@ -1,6 +1,6 @@
 # Verification record
 
-Prepared and checked on **3 November 2026**. This is a local package; no public repository, remote CI run or hosted deployment is claimed.
+Prepared and checked on **3 November 2026**. Published as [Fare Signal](https://github.com/annamariadirella-coder/fare-signal), with a [live demo](https://annamariadirella-coder.github.io/fare-signal/).
 
 ## Automated verification
 
@@ -11,7 +11,7 @@ Prepared and checked on **3 November 2026**. This is a local package; no public 
 - The static build completed successfully.
 - A self-contained HTML demo was generated from the same engine, fixtures and UI source.
 
-The GitHub CI definition includes Node 22 and 24; that matrix has not yet been executed on GitHub for this clean package.
+GitHub [CI workflow](https://github.com/annamariadirella-coder/fare-signal/actions) passed all 13 tests, source checks and static build on both Node 22 and Node 24. The [Pages deployment](https://github.com/annamariadirella-coder/fare-signal/actions) also succeeded. The linked workflow shows the public verification results.
 
 ## Browser walkthrough
 
