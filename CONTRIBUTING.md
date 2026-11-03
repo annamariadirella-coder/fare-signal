@@ -14,4 +14,6 @@ Use simple words in the guides and on the page. Explain a technical word the fir
 
 Keep this a pretend example. Do not add real keys, private trips, tracking or real messages. If you propose a real connection, make it a separate optional piece and explain its inputs and outputs. Keep keys outside the code. Add extra packages only when they solve a clear problem.
 
+Before committing, use your GitHub-provided `noreply` email address. Git saves the author and committer email inside each commit. Set it for this project with `git config --local user.email "YOUR_GITHUB_NOREPLY_ADDRESS"`. Keep personal contact details out of commit messages too.
+
 Never share a secret to show how a bug happens. See [keep secrets safe](SECURITY.md) and [be kind](CODE_OF_CONDUCT.md).

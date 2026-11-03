@@ -1,53 +1,41 @@
 # What I checked
 
-## Illustrated story update
+Checked on **3 November 2026**. The [public repository](https://github.com/annamariadirella-coder/fare-signal) includes a [live demo](https://annamariadirella-coder.github.io/fare-signal/).
 
-The main guide and case study now start with the actual user problem and outcome, in plain English. The Telegram illustration uses the same invented NF 208 journey and EUR 34.90 price as the demo. It is not a real message, paid fare or claimed saving. Both SVG drawings have text alternatives. The portable-file test checks that illustrations are embedded rather than left as separate image files.
+## Automatic checks
 
-Prepared and checked on **3 November 2026**. Published as [Fare Signal](https://github.com/annamariadirella-coder/fare-signal), with a [live demo](https://annamariadirella-coder.github.io/fare-signal/).
+- All 16 tests passed. They cover budget boundaries, wrong journeys, matching reads, repeated sends, simultaneous checks, unclear delivery, bot setup, stopping and the portable demo.
+- GitHub checks the project on Node.js 22 and 24. See the [CI workflow](https://github.com/annamariadirella-coder/fare-signal/actions/workflows/ci.yml) for the current results.
+- JavaScript syntax, local page files and selected private-data patterns were checked.
+- The static website build completed. The [Pages workflow](https://github.com/annamariadirella-coder/fare-signal/actions/workflows/pages.yml) records deployments.
+- The portable HTML generator embeds the rules, made-up data, styles and SVG illustration. Its test checks that the module parses and no separate image file is required.
 
-## Questions the computer checked
+## Browser checks
 
-- On my computer, I used Node.js 24.19.0.
-- All 16 test questions passed using `node --test`.
-- The code spelling checks passed. The page could find its local files.
-- The check found none of the secret or private-project patterns it looks for. It only knows a few patterns, so a person still needs to review the files.
-- The website files were packed into `dist/` successfully.
-- I also made one HTML file with the same rules, pretend data and page inside.
-
-GitHub [CI workflow](https://github.com/annamariadirella-coder/fare-signal/actions) passed all 13 tests, source checks and static build on both Node 22 and Node 24. The [Pages deployment](https://github.com/annamariadirella-coder/fare-signal/actions) also succeeded. The linked workflow shows the public verification results.
-
-## Full-story update
-
-The local suite now has 16 passing tests. Two new questions check the bot → Start → watch order and that buying a ticket stops all future pretend wake-ups.
-
-In the browser, I checked bot setup, the 08:00 → 10:00 clock jump, two first messages, a second jump with two repeats stopped, the notebook's two reads, and the stop button disabling further checks. I also checked the setup on a narrow screen and saw no sideways page overflow. Different-price reads produced no messages and four held decisions.
-
-## Things I tried in the first version
-
-I opened the first version in a browser and tried these steps. The table uses the new, simpler button names; the rules are the same:
-
-| Interaction | Observed result |
+| Step | Observed result |
 |---|---|
-| A cheaper ticket, €40 limit | 2 pretend messages |
-| Press Check again | 0 new messages; 2 repeats stopped |
-| The prices do not match | 0 messages; 4 trains left unchecked |
-| No price comes back | 0 messages; 4 trains left unchecked |
-| Did the message arrive? | 0 confirmed messages; 2 sends waiting for a person to check |
-| Repeat uncertain delivery | No new messages; the sends still wait for a check |
-| Budget changed to €20 | 0 messages |
-| Mobile, 390 × 844 viewport | The parts stacked neatly; no sideways page scrolling |
-| Mobile duplicate scan | 0 new messages; 2 repeats stopped |
-| Keyboard Tab after the check button | Focus moved to Start over |
-| Browser error log during walkthrough | No errors returned |
-| The one-file HTML demo, opened through a server | 2 pretend messages; no browser errors returned |
+| Create the pretend bot, press Start and start the watch | The controls become ready in that order |
+| Jump two hours at a €40 limit | Two simulated fare alerts |
+| Jump another two hours | No new alerts; two repeats stopped |
+| Open the notebook | Both price reads, decisions and message states are visible |
+| Choose different prices | No messages; four decisions held |
+| Choose a missing source | No messages; no invented prices |
+| Choose unclear delivery | Two qualifying sends stay pending rather than being retried |
+| Stop after the pretend purchase | Further checks are disabled until Start over |
+| Telegram-style preview | Outgoing Start bubble, bot reply, fare alerts and simulation labels |
+| Story illustration | The budget, price and journey match the made-up demo data |
+| Latest browser walkthrough | No browser errors returned |
 
-Pictures from the first version (button names were later made simpler): [desktop](../assets/demo-desktop.png), [mobile](../assets/demo-mobile.png).
+Earlier desktop and narrow-screen checks covered the page layout and keyboard navigation. These are manual checks, not a full accessibility certification.
 
-## What these checks cannot tell me
+## Public-data review
 
-I did not connect to or test a real railway website or Telegram. These checks do not prove that every accessibility tool works, that real prices are correct, or that separate running copies can safely share a message notebook. Read [how it works](ARCHITECTURE.md) before building a real service.
+The review covered all 10 development commits before the privacy cleanup, 110 distinct text versions and both historical screenshots. It found no copied conversation, bot credential, private chat ID, private railway journey or unrelated project in those files. The screenshots contain only fictional demo data.
 
-A test is a question I ask the code. A green result means it answered that question as expected. It does not prove the whole program can never go wrong. The GitHub links above show the exact runs I checked before this wording update.
+Commit author and committer metadata were then rebuilt with the owner's GitHub `noreply` address. Public documentation links to the current workflows rather than archived commit IDs or old workflow runs. New contributions should follow the [commit privacy guidance](../SECURITY.md#commit-privacy).
 
-The one-file generator now has a parser check too. It handles both Windows and Unix line endings so leftover imports cannot break the single HTML file.
+## Limits
+
+No real railway or Telegram connection is included or tested in this public demo. The message notebook is held in this browser tab, not shared between separate computers. The tests do not prove live fare accuracy, ticket availability, distributed delivery guarantees or compatibility with every accessibility tool.
+
+The private-data check looks for selected patterns. A human review is still needed before publishing new files. A passing test means the code answered that test question correctly; it does not prove the program can never fail.

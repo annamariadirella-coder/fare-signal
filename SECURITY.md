@@ -4,6 +4,10 @@ This project uses made-up data. It has no real bot keys, visitor accounts or rea
 
 A **secret key** is like a key to your front door. Keep it out of public files, screenshots and messages. Never post one in a GitHub issue, which other people may be able to read.
 
+## Commit privacy
+
+Git saves an author and committer email inside each commit, even if no email appears in the files. Use your GitHub-provided `noreply` address and enable **Keep my email addresses private** in GitHub's email settings. For a local copy, set `git config --local user.email "YOUR_GITHUB_NOREPLY_ADDRESS"`. Changing that setting affects new commits; it does not change older ones.
+
 ## If you find a safety problem
 
 Use the repo's **private vulnerability reporting** feature if it is available. That lets you tell the owner about a problem privately. If it is not available, ask the owner how to contact them privately. In that first public request, leave out secrets and details someone could use to cause harm.
