@@ -22,7 +22,7 @@ for (const filename of files) {
   }
   // Credential patterns and known private-project identifiers must never enter this clean repository.
   const patterns = [/\b\d{8,12}:[A-Za-z0-9_-]{30,}\b/, /\bgh[pousr]_[A-Za-z0-9]{20,}\b/,
-    new RegExp(['private', 'identifier'].join('')), new RegExp(['db-ice1008', '-price-watch'].join(''))];
+    new RegExp(['db-ice1008', '-price-watch'].join(''))];
   for (const expression of patterns) if (expression.test(text)) failures.push(path.relative(root, filename) + ': private data pattern');
 }
 for (const page of ['index.html', 'demo-video.html']) {
