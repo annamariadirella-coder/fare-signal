@@ -95,9 +95,13 @@ You can install **the complete demo** from this repository. It is not a public l
 
 ## Run the demo on your computer
 
-You need **Node.js 22 or newer**, a tool that runs JavaScript. If you have Git, open a terminal (the window where you type commands) and enter these lines one at a time:
+You need **Node.js 22 or newer**, a tool that runs JavaScript. The easiest way on Windows is **PowerShell**, which is already included with Windows. You can use it as the simple window where you type commands.
 
-```sh
+### Windows PowerShell
+
+Open PowerShell, then enter these lines one at a time:
+
+```powershell
 git clone https://github.com/annamariadirella-coder/fare-signal.git
 cd fare-signal
 npm start
@@ -105,7 +109,9 @@ npm start
 
 Open **http://127.0.0.1:8765** in your browser. This address points to your own computer. Keep the terminal open. Press **Ctrl+C** there to stop the demo.
 
-**No Git?** Choose **Code → Download ZIP** on GitHub, unzip it and open a terminal in the folder containing `package.json`. Run `npm start`.
+If PowerShell says that `git` is not recognised, install [Git for Windows](https://git-scm.com/download/win), close PowerShell, open it again, and run the same commands. If `npm` is not recognised, install [Node.js 22 or newer](https://nodejs.org/en/download), then open PowerShell again.
+
+**No Git?** Choose **Code → Download ZIP** on GitHub, unzip it, open PowerShell in the unzipped folder, and run `npm start`.
 
 You do not need `npm install`: there are no extra packages to download. If port 8765 is busy, stop the other copy or set `PORT` to another number in your terminal.
 
