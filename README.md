@@ -10,9 +10,15 @@ I built a system to look for me. It checked prices about every two hours. When i
 
 **I bought a ticket for a later train, then switched the alerts off.** The system did not buy anything. It helped me know when to look. The paid fare is private; this project does not claim a saving I cannot show.
 
-**[Try the demo →](https://annamariadirella-coder.github.io/fare-signal/)** · [Read the full story](docs/CASE_STUDY.md) · [Run a copy on your computer](#run-the-demo-on-your-computer)
+**[Watch the 2-minute video →](https://annamariadirella-coder.github.io/fare-signal/demo-video.html)** · **[Try the demo →](https://annamariadirella-coder.github.io/fare-signal/)** · [Read the full story](docs/CASE_STUDY.md) · [Run a copy on your computer](#run-the-demo-on-your-computer)
 
 > **Two versions, one story.** The original private system read real railway prices and sent real Telegram alerts. It is now off. This repository shows the whole journey with made-up trains, prices and messages. It does not include the private railway reader, check live fares or send messages to your phone.
+
+## Watch the whole project in two minutes
+
+[![Watch the English narrated walkthrough](assets/video-poster.png)](https://annamariadirella-coder.github.io/fare-signal/demo-video.html)
+
+The video shows the problem, bot setup, pretend two-hour clock, price checks, Telegram-style alerts, blocked repeats and stop after buying. It includes English system-voice narration and visible captions. All demo data is made up. [Watch online](https://annamariadirella-coder.github.io/fare-signal/demo-video.html), [download the MP4](assets/demo-walkthrough.mp4), or [read the transcript](assets/demo-transcript.txt).
 
 ## This is the message I wanted to receive
 

@@ -34,6 +34,10 @@ The review covered all 10 development commits before the privacy cleanup, 110 di
 
 Commit author and committer metadata were then rebuilt with the owner's GitHub `noreply` address. Public documentation links to the current workflows rather than archived commit IDs or old workflow runs. New contributions should follow the [commit privacy guidance](../SECURITY.md#commit-privacy).
 
+## Video walkthrough
+
+The video uses captured public demo screens and English system-voice narration. It shows the made-up budget, bot setup, two reads, Telegram-style alert, duplicate protection, disagreement and stopping. Captions are visible in the picture, with a separate transcript and caption file. No private browser tabs, personal email, real ticket or real Telegram chat are included.
+
 ## Limits
 
 No real railway or Telegram connection is included or tested in this public demo. The message notebook is held in this browser tab, not shared between separate computers. The tests do not prove live fare accuracy, ticket availability, distributed delivery guarantees or compatibility with every accessibility tool.

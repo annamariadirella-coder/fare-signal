@@ -1,0 +1,35 @@
+FARE SIGNAL: A NARRATED DEMO
+Made-up data. No real Telegram messages.
+
+A ticket below €40
+I needed a ticket below forty euros. The fare for my first choice kept rising, so I built Fare Signal to watch later direct trains.
+
+The whole journey, safely simulated
+The original private watcher ran about every two hours and sent real Telegram alerts. This public walkthrough uses made-up data and sends no real messages.
+
+Make a bot. Press Start.
+First, I make a pretend bot and press Start. The chat now has a place for its replies.
+
+Two hours in one click
+I start the watch. One click moves the pretend clock forward by two hours and runs the next check.
+
+Same train. Same price.
+The same journey and price must agree in two reads. The fare must be strictly below forty euros.
+
+€34.90 is below €40
+A direct train at thirty four euros and ninety cents passes. Its alert appears in the Telegram-style chat, with the journey and price.
+
+No repeat interruptions
+I check again. No new messages appear. The notebook remembers the trains it already sent.
+
+Different prices? Wait.
+If the two prices disagree, the system waits. A cheap number is not enough.
+
+Ticket bought. Watch off.
+Once I have a ticket, I stop the watch. It cannot run again until I start over.
+
+A later train worked for me
+The real project helped me find a suitable later train. The public demo lets anyone explore the whole idea with made-up data.
+
+Check twice. Tell me once.
+Try the demo or read the source. Fare Signal: check twice, tell me once.

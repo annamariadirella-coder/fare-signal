@@ -1,0 +1,34 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.351
+I needed a ticket below forty euros. The fare for my first choice kept rising, so I built Fare Signal to watch later direct trains.
+
+00:00:13.151 --> 00:00:26.961
+The original private watcher ran about every two hours and sent real Telegram alerts. This public walkthrough uses made-up data and sends no real messages.
+
+00:00:27.761 --> 00:00:36.231
+First, I make a pretend bot and press Start. The chat now has a place for its replies.
+
+00:00:37.031 --> 00:00:46.020
+I start the watch. One click moves the pretend clock forward by two hours and runs the next check.
+
+00:00:46.820 --> 00:00:55.893
+The same journey and price must agree in two reads. The fare must be strictly below forty euros.
+
+00:00:56.693 --> 00:01:08.227
+A direct train at thirty four euros and ninety cents passes. Its alert appears in the Telegram-style chat, with the journey and price.
+
+00:01:09.027 --> 00:01:18.260
+I check again. No new messages appear. The notebook remembers the trains it already sent.
+
+00:01:19.060 --> 00:01:26.697
+If the two prices disagree, the system waits. A cheap number is not enough.
+
+00:01:27.497 --> 00:01:35.555
+Once I have a ticket, I stop the watch. It cannot run again until I start over.
+
+00:01:36.355 --> 00:01:47.698
+The real project helped me find a suitable later train. The public demo lets anyone explore the whole idea with made-up data.
+
+00:01:48.498 --> 00:01:56.220
+Try the demo or read the source. Fare Signal: check twice, tell me once.

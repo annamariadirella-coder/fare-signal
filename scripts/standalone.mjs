@@ -18,5 +18,7 @@ for (const match of [...html.matchAll(/src="(assets\/[^"?]+\.svg)"/g)]) {
   const data = 'data:image/svg+xml,' + encodeURIComponent(await text(match[1]));
   html = html.replaceAll(`src="${match[1]}"`, `src="${data}"`);
 }
+html = html.replace(/<a class="text-link video-link"[^>]*>[\s\S]*?<\/a>/, '<a class="text-link" href="#playground">Try the demo ↓</a>')
+  .replace(/<a class="interactive-link"[^>]*>[\s\S]*?<\/a>/, '');
 await writeFile(new URL('fare-signal-demo.html', root), html);
 console.log('Self-contained, offline demo created: fare-signal-demo.html');

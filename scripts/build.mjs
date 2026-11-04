@@ -6,7 +6,7 @@ const dist = new URL('dist/', root);
 // Only the generated dist directory inside this repository is replaced.
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
-for (const name of ['index.html', 'demo', 'src', 'assets', 'docs', 'README.md', 'LICENSE']) {
+for (const name of ['index.html', 'demo-video.html', 'demo', 'src', 'assets', 'docs', 'README.md', 'LICENSE']) {
   await cp(new URL(name, root), new URL(name, dist), { recursive: true });
 }
 // A new page must not reuse an older cached controller or stylesheet after publication.

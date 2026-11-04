@@ -1,5 +1,11 @@
 # What changed
 
+## Narrated video: 2026-11-04
+
+- Added a two-minute Full HD walkthrough with English narration and visible captions.
+- Added a video page, MP4 download, transcript and caption file.
+- Linked the video from the homepage and main guide while keeping the interactive demo available.
+
 ## Personal story and Telegram-style chat: 2026-11-03
 
 - Changed the story to first-person singular and removed long dashes.

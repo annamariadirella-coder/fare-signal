@@ -1,5 +1,7 @@
 # Present Fare Signal in three minutes
 
+Prefer a ready-to-play introduction? Use the [two-minute English video](https://annamariadirella-coder.github.io/fare-signal/demo-video.html). It has narration and visible captions. Then open the interactive demo for questions. The transcript and MP4 are linked from the video page.
+
 Open the [story and Telegram example](https://annamariadirella-coder.github.io/fare-signal/#story). Start with the problem, before showing the buttons.
 
 ## 1. The problem: the fare kept rising

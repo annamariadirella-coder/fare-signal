@@ -14,7 +14,7 @@ async function walk(dir) {
 await walk(root);
 let failures = [];
 for (const filename of files) {
-  if (/\.(png|gif|zip)$/.test(filename)) continue;
+  if (/\.(png|gif|zip|mp4)$/.test(filename)) continue;
   const text = await readFile(filename, 'utf8');
   if (filename.endsWith('.mjs')) {
     try { execFileSync(process.execPath, ['--check', filename], { stdio: 'pipe' }); }
@@ -25,11 +25,14 @@ for (const filename of files) {
     new RegExp(['private', 'identifier'].join('')), new RegExp(['db-ice1008', '-price-watch'].join(''))];
   for (const expression of patterns) if (expression.test(text)) failures.push(path.relative(root, filename) + ': private data pattern');
 }
-const html = await readFile(path.join(root, 'index.html'), 'utf8');
-for (const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
-  const link = match[1];
-  if (link.includes('://')) { failures.push('External page dependency: ' + link); continue; }
-  try { await readFile(path.join(root, link)); } catch { failures.push('Missing local asset: ' + link); }
+for (const page of ['index.html', 'demo-video.html']) {
+  const html = await readFile(path.join(root, page), 'utf8');
+  for (const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
+    const link = match[1];
+    if (link.includes('://')) { failures.push('External page dependency: ' + link); continue; }
+    const local = link.split('#')[0].split('?')[0];
+    try { await readFile(path.join(root, local)); } catch { failures.push('Missing local asset: ' + link); }
+  }
 }
 if (failures.length) { console.error(failures.join('\n')); process.exitCode = 1; }
 else console.log(`Checked ${files.length} files: local assets present, no private-project or credential patterns found.`);
