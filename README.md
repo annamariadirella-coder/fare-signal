@@ -18,7 +18,7 @@ I built a system to look for me. It checked prices about every two hours. When i
 
 [![Watch the English narrated walkthrough](assets/video-poster.png)](https://annamariadirella-coder.github.io/fare-signal/demo-video.html)
 
-The video shows the problem, bot setup, pretend two-hour clock, price checks, Telegram-style alerts, blocked repeats and stop after buying. It includes English system-voice narration and visible captions. All demo data is made up. [Watch online](https://annamariadirella-coder.github.io/fare-signal/demo-video.html), [download the MP4](assets/demo-walkthrough.mp4), or [read the transcript](assets/demo-transcript.txt).
+The video shows the problem, bot setup, pretend two-hour clock, price checks, Telegram-style alerts, blocked repeats and stop after buying. It includes English recorded narration and visible captions. All demo data is made up. [Watch online](https://annamariadirella-coder.github.io/fare-signal/demo-video.html), [download the MP4](assets/demo-walkthrough.mp4), or [read the transcript](assets/demo-transcript.txt).
 
 ## This is the message I wanted to receive
 
